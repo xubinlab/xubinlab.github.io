@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Notes | Xu Bin Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Technical notes from Xu Bin on CFD, HPC and engine simulation on custom chips." />
+  <style>
+    :root {
+      --bg: #0b1120;
+      --fg: #e5e7eb;
+      --fg-muted: #9ca3af;
+      --accent: #38bdf8;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
+      color: var(--fg);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(30, 64, 175, 0.6);
+    }
+    .brand {
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: var(--fg-muted);
+    }
+    nav a {
+      font-size: 0.9rem;
+      margin-left: 16px;
+      color: var(--fg-muted);
+    }
+    nav a:hover { color: var(--fg); }
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav { display: flex; flex-wrap: wrap; }
+      nav a { margin: 4px 12px 0 0; }
+    }
+    h1 {
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+    .sub {
+      font-size: 0.95rem;
+      color: var(--fg-muted);
+      max-width: 640px;
+    }
+    h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--fg-muted);
+      margin-top: 32px;
+      margin-bottom: 8px;
+    }
+    .notes-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .notes-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.8);
+    }
+    .note-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .note-meta {
+      font-size: 0.8rem;
+      color: var(--fg-muted);
+      margin-top: 2px;
+      margin-bottom: 4px;
+    }
+    .note-desc {
+      font-size: 0.9rem;
+      color: var(--fg);
+      margin: 0;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: var(--fg-muted);
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      padding-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        XU BIN LAB · NOTES
+      </div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/notes/">Notes</a>
+        <a href="mailto:xubinlab@gmail.com">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Technical Notes</h1>
+      <p class="sub">
+        This section collects long-form notes and whitepaper-style articles about
+        <strong>compressible CFD solvers, HPC, and engine simulation on custom chips</strong>.
+        The goal is not to write papers, but to document engineering decisions, trade-offs,
+        and lessons learned from real projects.
+      </p>
+
+      <h2>Published / Drafts</h2>
+      <ul class="notes-list">
+        <li>
+          <a class="note-title" href="/notes/chip-cfd-on-custom-chips.html">
+            Designing a Compressible CFD Solver for Custom Scientific Computing Chips
+          </a>
+          <div class="note-meta">
+            Status: Draft · Language: English
+          </div>
+          <p class="note-desc">
+            From equations and discretization to sparse linear solvers and data layout:
+            how to adapt a compressible CFD solver to a heterogeneous, bandwidth-limited
+            scientific computing chip, without sacrificing verification and robustness.
+          </p>
+        </li>
+        <!-- 后面可以继续往下追加 li -->
+      </ul>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Xu Bin Lab · Notes.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
