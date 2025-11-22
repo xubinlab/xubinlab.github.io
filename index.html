@@ -1,362 +1,447 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-cn">
 <head>
   <meta charset="UTF-8" />
-  <title>Xu Bin Lab | CFD · HPC · Engine Simulation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Xu Bin Lab - CFD, HPC and engine simulation with custom chips." />
+  <title>Xu Bin Lab | CFD · HPC · Chips · AI</title>
+  <meta name="description" content="徐斌 Xu Bin：专注 CFD/CAE 求解器、HPC 与稀疏矩阵求解、软硬件一体与 AI 加速，从算法到实现到部署解决工程仿真问题。" />
   <style>
     :root {
-      --bg: #0b1120;
-      --bg-alt: #020617;
+      --bg: #0b1015;
+      --bg-alt: #111821;
       --fg: #e5e7eb;
-      --fg-muted: #9ca3af;
-      --accent: #38bdf8;
-      --card-bg: #020617;
-      --border: #1f2937;
+      --muted: #9ca3af;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59,130,246,0.12);
+      --border: #1f2933;
+      --code-bg: #020617;
+      --max-width: 900px;
+      --radius: 10px;
     }
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                   "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
       color: var(--fg);
       line-height: 1.6;
     }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .page {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 24px 16px 64px;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
     header {
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: linear-gradient(to bottom, rgba(15,23,42,0.9), rgba(15,23,42,0.7));
+    }
+    nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.6rem 1.2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 8px 0 16px;
-    }
-    .brand {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
-    .brand-title {
-      font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .brand-tagline {
-      font-size: 0.85rem;
-      color: var(--fg-muted);
-    }
-    nav a {
       font-size: 0.9rem;
-      margin-left: 16px;
-      color: var(--fg-muted);
     }
-    nav a:hover {
+    nav .brand {
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      font-size: 0.95rem;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+    nav li a {
+      color: var(--muted);
+    }
+    nav li a:hover {
       color: var(--fg);
     }
-    @media (max-width: 640px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav {
-        display: flex;
-        flex-wrap: wrap;
-      }
-      nav a {
-        margin: 4px 12px 0 0;
-      }
+    nav .lang-switch a {
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
     }
-
-    .hero {
-      padding: 32px 0 16px;
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.8rem 1.2rem 3rem;
     }
-    .hero-title {
-      font-size: clamp(2.1rem, 3vw, 2.6rem);
-      font-weight: 700;
-      margin-bottom: 8px;
+    section {
+      margin: 2.4rem 0;
+      padding: 1.8rem 1.6rem;
+      background: rgba(15,23,42,0.9);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
     }
-    .hero-sub {
-      font-size: 0.98rem;
-      color: var(--fg-muted);
-      max-width: 640px;
+    section.hero {
+      margin-top: 1.8rem;
+      background: radial-gradient(circle at top left, #1e293b, #020617);
+      border-color: #1e293b;
     }
-    .hero-highlight {
-      color: var(--accent);
-      font-weight: 600;
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.9rem;
+      letter-spacing: 0.03em;
     }
-    .hero-meta {
-      margin-top: 16px;
-      font-size: 0.9rem;
-      color: var(--fg-muted);
-    }
-
     h2 {
-      font-size: 1.1rem;
-      margin: 32px 0 12px;
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--fg-muted);
-      font-weight: 600;
+      color: var(--muted);
     }
-
-    .card-grid {
+    h3 {
+      margin-top: 1.3rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+    }
+    p { margin: 0.3rem 0; }
+    .muted { color: var(--muted); }
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+    .hero-tags {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+    .tag {
+      padding: 0.12rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.9);
+      color: var(--muted);
+    }
+    .hero-actions {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .btn {
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      background: var(--accent-soft);
+      color: var(--fg);
+    }
+    .btn.secondary {
+      border-color: var(--border);
+      background: rgba(15,23,42,0.8);
+      color: var(--muted);
+    }
+    .btn:hover {
+      background: rgba(59,130,246,0.2);
+      text-decoration: none;
+    }
+    .btn.secondary:hover {
+      background: rgba(15,23,42,1);
+    }
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.9rem;
+      margin-top: 1.0rem;
+      font-size: 0.9rem;
+    }
+    .focus-card {
+      border-radius: var(--radius);
+      padding: 0.9rem 0.95rem;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid var(--border);
+    }
+    .focus-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.35rem;
+      font-size: 0.95rem;
+    }
+    .focus-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    ul {
+      padding-left: 1.2rem;
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+    }
+    .two-col {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
+      gap: 1.4rem;
     }
-    .card {
-      background: rgba(15, 23, 42, 0.8);
-      border-radius: 12px;
-      padding: 16px 18px;
-      border: 1px solid rgba(148, 163, 184, 0.24);
-      backdrop-filter: blur(16px);
-    }
-    .card-title {
-      font-size: 0.98rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    .card-meta {
-      font-size: 0.8rem;
-      color: var(--fg-muted);
-      margin-bottom: 6px;
-    }
-    .card p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: var(--fg);
-    }
-    .card ul {
-      padding-left: 18px;
-      margin: 4px 0 0;
-      font-size: 0.88rem;
-      color: var(--fg-muted);
-    }
-
-    .list {
+    .list-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.9rem;
+      padding: 0;
+      margin: 0.4rem 0;
       list-style: none;
-      padding-left: 0;
-      margin: 0;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      color: var(--muted);
     }
-    .list li {
-      margin-bottom: 4px;
-      color: var(--fg-muted);
+    .code-block {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: var(--code-bg);
+      border-radius: var(--radius);
+      padding: 0.6rem 0.8rem;
+      font-size: 0.82rem;
+      border: 1px solid #020617;
+      overflow-x: auto;
+      color: #e5e7eb;
     }
-
-    .section-muted {
-      font-size: 0.9rem;
-      color: var(--fg-muted);
-      max-width: 720px;
-    }
-
-    .notes-list li {
-      margin-bottom: 6px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      font-size: 0.74rem;
-      color: var(--fg-muted);
-      margin-right: 6px;
-      margin-bottom: 4px;
-    }
-
-    .contact {
-      font-size: 0.9rem;
-    }
-    .contact dt {
-      font-weight: 500;
-      margin-top: 4px;
-    }
-    .contact dd {
-      margin: 0 0 4px 0;
-      color: var(--fg-muted);
-      word-break: break-all;
-    }
-
     footer {
-      margin-top: 40px;
-      font-size: 0.78rem;
-      color: var(--fg-muted);
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      padding-top: 12px;
+      max-width: var(--max-width);
+      margin: 0 auto 1.5rem;
+      padding: 0 1.2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      nav { padding-inline: 0.9rem; }
+      main { padding-inline: 0.9rem; }
+      section { padding-inline: 1.0rem; }
+      h1 { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="brand">
-        <div class="brand-title">Xu Bin Lab</div>
-        <div class="brand-tagline">CFD · HPC · Engine Simulation · Custom Chips</div>
+<header>
+  <nav>
+    <div class="brand">XU BIN LAB</div>
+    <ul>
+      <li><a href="#about">关于</a></li>
+      <li><a href="#tech-stack">技术体系</a></li>
+      <li><a href="#projects">项目</a></li>
+      <li><a href="#notes">技术笔记</a></li>
+      <li><a href="#tools">工具</a></li>
+      <li><a href="#contact">联系</a></li>
+      <li class="lang-switch"><a href="/en/">EN</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <h1>徐斌 · Xu Bin</h1>
+    <p class="hero-subtitle">
+      CFD / CAE 求解器 · HPC 与稀疏矩阵求解 · 软硬件一体 · AI for CAE &amp; Coding
+      <br />
+      专注 CFD/CAE 求解器、HPC 与稀疏矩阵求解、软硬件一体与 AI 加速，从算法到实现到部署解决真实工程仿真与性能瓶颈问题。
+    </p>
+    <div class="hero-tags">
+      <span class="tag">CFD / CAE</span>
+      <span class="tag">Turbulence &amp; Engine Simulation</span>
+      <span class="tag">HPC &amp; Sparse Solvers</span>
+      <span class="tag">Custom Chips</span>
+      <span class="tag">AI for CAE / Coding / Chips</span>
+      <span class="tag">C++ · Fortran</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn" href="#tech-stack">查看技术体系</a>
+      <a class="btn secondary" href="#projects">查看项目案例</a>
+      <a class="btn secondary" href="#notes">阅读技术笔记</a>
+    </div>
+
+    <div class="focus-grid" style="margin-top: 1.4rem;">
+      <div class="focus-card">
+        <h3>CFD / CAE 求解器</h3>
+        <p>从方程建模、数值格式、边界条件到整体求解流程，搭建可用于航空发动机等复杂场景的 CFD/CAE 求解器。</p>
       </div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#focus">Focus</a>
-        <a href="#projects">Projects</a>
-        <a href="#notes">Notes</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+      <div class="focus-card">
+        <h3>HPC 与稀疏矩阵求解</h3>
+        <p>隐式求解、稀疏线性系统、多核并行，关注大规模算例下的稳定性、收敛特性与带宽利用。</p>
+      </div>
+      <div class="focus-card">
+        <h3>芯片部署与软硬件一体</h3>
+        <p>在国产芯片上部署 CFD/CAE 求解器，结合体系结构与内存层次做软硬件协同优化，而不仅仅是“矩阵 IP 对接”。</p>
+      </div>
+      <div class="focus-card">
+        <h3>AI for CAE / Coding / Chips</h3>
+        <p>用 AI 做模型选择、求解器调度、代码生成与性能瓶颈识别，服务于 CAE 与芯片部署，而不是脱离物理的黑盒玩具。</p>
+      </div>
+    </div>
+  </section>
 
-    <main>
-      <section class="hero">
-        <h1 class="hero-title">徐斌（Xu Bin） · CFD / HPC / Engine Simulation</h1>
-        <p class="hero-sub">
-          可压缩流体力学算法工程师，长期在 <span class="hero-highlight">CFD 求解器 · 高性能计算 · 国产异构芯片</span> 交叉地带工作。
-          目前专注于航空发动机全流道仿真（风扇 / 压气机 / 燃烧室 / 涡轮）以及稀疏矩阵求解在自研芯片上的加速。
+  <!-- About -->
+  <section id="about">
+    <h2>ABOUT · 关于我</h2>
+    <div class="two-col">
+      <div>
+        <p>
+          我是一名 CFD / CAE 算法工程师，目前在一家国产芯片公司做软硬件一体的仿真平台开发，
+          主要方向是航空发动机全流道仿真、HPC 与稀疏矩阵求解、以及在自研芯片上的部署与优化。
         </p>
-        <div class="hero-meta">
-          5+ 年仿真软件与芯片协同开发经验 · FVM / FEM / 相场 · 隐式可压缩求解 · BiCGStab / CG / 预条件 ·
-          软硬件一体化 CFD 平台设计
-        </div>
-      </section>
-
-      <section id="about">
-        <h2>ABOUT</h2>
-        <p class="section-muted">
-          我受训于流体力学与计算力学专业，毕业后一直从事工业级 CFD 代码研发工作，方向覆盖
-          <strong>可压缩三维流动、航空发动机部件仿真、结构与多物理场耦合</strong>。
-          目前在一家软硬件一体化公司，参与将自研科学计算芯片与自研 CFD 求解器深度适配，
-          在真实工程算例上追求 <strong>高精度 + 高加速比</strong> 的平衡。
+        <p>
+          背景是流体力学与科学计算，过去几年的工作集中在：从零实现可压缩 CFD 求解器、建立测试与验证体系、
+          并在自研芯片上探索软件–硬件协同的加速方案。
         </p>
-      </section>
-
-      <section id="focus">
-        <h2>FOCUS</h2>
-        <div class="card-grid">
-          <div class="card">
-            <div class="card-title">CFD 算法与求解器</div>
-            <div class="card-meta">Compressible flow · FVM / FEM · Turbulence</div>
-            <ul class="list">
-              <li>三维可压缩流 FVM 求解器（RANS / LES / DNS 方向）</li>
-              <li>航空发动机全流道：风扇、压气机、燃烧室、涡轮模拟</li>
-              <li>多物理场扩展：热–流–固耦合、相场、电池相关模拟规划中</li>
-            </ul>
-          </div>
-          <div class="card">
-            <div class="card-title">HPC & 稀疏矩阵求解</div>
-            <div class="card-meta">BiCGStab / CG · Preconditioning · Parallel Scaling</div>
-            <ul class="list">
-              <li>隐式可压缩求解中的稀疏线性方程组求解与性能优化</li>
-              <li>多核并行、向量化与带宽受限场景下的算子重构与数据布局</li>
-              <li>针对大规模网格（百万～千万单元）的加速与自动化测试体系</li>
-            </ul>
-          </div>
-          <div class="card">
-            <div class="card-title">软硬件一体化与国产芯片</div>
-            <div class="card-meta">Custom chips · Heterogeneous compute</div>
-            <ul class="list">
-              <li>面向国产异构科学计算芯片的 CFD 算法适配与重构</li>
-              <li>芯片指令集特性分析、矩阵核调优与数据流设计</li>
-              <li>构建从算法原型 → 工程代码 → 上芯片部署的开发规范</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects">
-        <h2>PROJECTS</h2>
-        <div class="card-grid">
-          <div class="card">
-            <div class="card-title">航空发动机全流道仿真</div>
-            <div class="card-meta">Engine fan / compressor / combustor / turbine</div>
-            <p>
-              参与构建发动机部件级与全机级仿真能力，从经典翼型、SOD 管等基础算例入手，
-              逐步扩展到风扇、压气机、燃烧室与涡轮的工程工况。
-              在保证物理可靠性的前提下，评估并提升多核并行效率和整体加速比。
-            </p>
-          </div>
-          <div class="card">
-            <div class="card-title">自研芯片上的稀疏矩阵求解加速</div>
-            <div class="card-meta">Sparse linear systems · Custom accelerator</div>
-            <p>
-              将隐式可压缩 CFD 中的矩阵求解环节迁移至自研科学计算芯片，
-              对 BiCGStab / CG 等求解器以及预条件器进行适配与优化，
-              在典型工程网格规模下实现显著加速比，并与商用软件做对标测试。
-            </p>
-          </div>
-          <div class="card">
-            <div class="card-title">CFD 开发流程与自动化测试</div>
-            <div class="card-meta">Dev workflow · Verification & regression</div>
-            <p>
-              参与设计自研 CFD 代码的开发规范与测试体系，包括算例库、回归测试、
-              性能基准以及网格 / 边界条件读写的鲁棒性校验（如哈希校验等），
-              目标是让算法研究与工程落地之间有一套可重复、可扩展的流水线。
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="notes">
-        <h2>NOTES</h2>
-        <p class="section-muted">
-          这里将逐步整理一些关于 CFD 算法、HPC 调优与软硬件一体化开发的技术笔记 /
-          白皮书风格文章。目前正在规划的几篇包括：
+        <p>
+          这个网站用于系统整理我的技术体系、项目经验和问题解决思路，也作为对外交流与应聘时的技术档案。
         </p>
-        <ul class="list notes-list">
-          <li>
-            <span class="badge">Draft</span>
-            <strong>面向自研科学计算芯片的可压缩 CFD 求解器设计与实践</strong>
-            – 从方程组、离散格式到矩阵求解与数据布局，讨论如何在新架构上平衡精度与性能。
-          </li>
-          <li>
-            <span class="badge">Draft</span>
-            <strong>从 SOD 到发动机：构建可压缩 CFD 的验证与回归测试体系</strong>
-            – 如何选取算例、指标与自动化流程，保证代码在迭代中保持可靠。
-          </li>
-          <li>
-            <span class="badge">Plan</span>
-            <strong>航空发动机全流道仿真中的数值方法选型与工程权衡</strong>
-            – 讨论风扇、压气机、燃烧室与涡轮模块在精度、耗时与算力之间的取舍。
-          </li>
+      </div>
+      <div>
+        <h3>当前关注方向</h3>
+        <ul>
+          <li>CFD / CAE 求解器（尤其是发动机全流道与复杂边界）</li>
+          <li>隐式格式下的稀疏矩阵求解与 HPC 并行优化</li>
+          <li>国产芯片上的 CFD 部署与软硬件一体设计</li>
+          <li>AI + CAE / AI + Coding / AI + 芯片性能分析</li>
         </ul>
-        <p class="section-muted" style="margin-top:8px;">
-          笔记将整理在 <code>/notes/</code> 路径下，后续会陆续开放。
-        </p>
-      </section>
+        <h3>快速索引</h3>
+        <ul class="list-inline">
+          <li><a href="#tech-stack">技术体系</a></li>
+          <li><a href="#projects">项目案例</a></li>
+          <li><a href="#notes">技术笔记</a></li>
+          <li><a href="#tools">工具</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      <section id="contact">
-        <h2>CONTACT</h2>
-        <dl class="contact">
-          <dt>Email</dt>
-          <dd><a href="mailto:xubinlab@gmail.com">xubinlab@gmail.com</a></dd>
+  <!-- Tech Stack -->
+  <section id="tech-stack">
+    <h2>TECH STACK · 技术体系</h2>
 
-          <dt>GitHub</dt>
-          <dd><a href="https://github.com/xubinlab" target="_blank" rel="noopener">github.com/xubinlab</a></dd>
+    <h3>1. 物理与 CAE 建模（Physics &amp; CAE Modeling）</h3>
+    <ul>
+      <li>流体力学基础：可压缩/不可压缩流、边界层、激波、涡结构。</li>
+      <li>守恒方程与控制方程：质量、动量、能量方程的积分/微分形式。</li>
+      <li>湍流建模：RANS（k–ε/k–ω/SST）、LES/DES 的工程适用性与局限。</li>
+      <li>多物理：多相流（VOF / Level-Set / Euler–Euler / Euler–Lagrange）、传热传质、燃烧与反应流。</li>
+      <li>典型工程场景：风扇、压气机、燃烧室、涡轮等部件的需求差异。</li>
+    </ul>
 
-          <dt>Website</dt>
-          <dd><a href="https://xubinlab.com">https://xubinlab.com</a>（本页）</dd>
-        </dl>
-      </section>
-    </main>
+    <h3>2. 数值方法、求解器与 HPC（Numerics, Solvers &amp; HPC）</h3>
+    <ul>
+      <li>离散方法：FVM/FEM/DG 等离散框架，时间推进（显式/隐式、多步法/Runge–Kutta）。</li>
+      <li>求解器设计：压力–速度耦合、完全耦合、非线性迭代与收敛判据。</li>
+      <li>稀疏线性系统：Jacobian 结构、预条件、CG/BiCGStab/GMRES 等 Krylov 子空间方法。</li>
+      <li>HPC：MPI/OpenMP/混合并行、网格划分与负载均衡、大规模算例下的带宽与缓存行为。</li>
+      <li>性能与鲁棒性：在迭代轨迹、谱性质和工程可用性之间寻找平衡。</li>
+    </ul>
 
-    <footer>
-      © <span id="year"></span> Xu Bin Lab. 个人技术主页 · CFD / HPC / Engine Simulation / Custom Chips.
-    </footer>
-  </div>
+    <h3>3. 软件工程与计算流程（Software Engineering &amp; Workflow）</h3>
+    <ul>
+      <li>代码架构：现代 C++ 风格的 CFD/CAE 求解器架构设计，模块化与可扩展性。</li>
+      <li>测试与验证：单元测试、回归测试、算例库管理、物理量与残差的监控。</li>
+      <li>计算流程：前处理（网格/边界条件）、求解控制、后处理与数据管理。</li>
+      <li>工具化：脚本自动化、配置管理、结果复现与项目模板化。</li>
+      <li>与商业软件/开源软件的协同：网格格式、后处理接口、数据交换。</li>
+    </ul>
 
-  <script>
-    // 自动填充年份
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <h3>4. 芯片与系统集成（Chips &amp; System Integration）</h3>
+    <ul>
+      <li>国产芯片架构理解：计算阵列、内存层次、带宽与延迟特性（在不涉密前提下）。</li>
+      <li>算子映射：哪些算子适合上芯片（矩阵–向量、多右端、多网格），哪些应留在 CPU 侧。</li>
+      <li>数据布局：稀疏矩阵存储格式、访存模式与 cache 友好布局。</li>
+      <li>系统集成：从“CFD 求解器”到“软硬件一体计算平台”的接口设计与调度逻辑。</li>
+      <li>性能对标：与常规 CPU/GPU 的加速比、能效、规模扩展的分析。</li>
+    </ul>
+
+    <h3>5. AI for CAE / Coding / Chips</h3>
+    <ul>
+      <li>AI + CAE：基于先验物理与数值分析的模型选择、参数调优、算例分类。</li>
+      <li>AI + Coding：借助 LLM 等工具加速 C++/Fortran 开发、重构、测试样例生成。</li>
+      <li>AI + 芯片：利用 AI 做瓶颈识别、参数搜索、任务调度策略探索（而非替代架构设计）。</li>
+      <li>边界与约束：坚持物理约束、数值稳定性与工程可验证性作为第一原则。</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>PROJECTS · 项目与案例</h2>
+    <p class="muted">
+      以下只是示意结构。后续会逐步补充代表性的项目案例，每个案例都按照“问题背景 → 目标 → 技术方案 → 结果 → 反思”展开。
+    </p>
+
+    <h3>示例：航空发动机全流道仿真平台（Soft–Hardware Co-Design）</h3>
+    <ul>
+      <li><strong>问题背景：</strong> 多级风扇、压气机、燃烧室、涡轮的全流道气动与热力特性评估，对精度和计算时间都有刚性要求。</li>
+      <li><strong>目标：</strong> 在给定算力和时间预算下，比肩或超越商用软件的精度，并在国产芯片上获得可观的加速比。</li>
+      <li><strong>我的角色：</strong> 求解器设计与实现、隐式格式与稀疏矩阵求解优化、软硬件协同方案制定、测试与对标。</li>
+      <li><strong>技术要点：</strong> 网格与方程无量纲、RANS/LES 模型选择、Jacobian 构造、Krylov 求解器与预条件、MPI 并行、芯片侧矩阵算子部署。</li>
+      <li><strong>结果：</strong> 在典型算例上达到与商用软件相近的工程精度，加速比达到预期目标（细节后续在独立页面展开）。</li>
+    </ul>
+
+    <h3>示例：稀疏矩阵求解与芯片加速</h3>
+    <ul>
+      <li>围绕 BiCGStab/CG 等迭代求解器，分析矩阵结构与谱性质，设计适合芯片的存储和算子调用模式。</li>
+      <li>对比不同网格规模（例如 40 万 / 400 万 网格）下矩阵部分加速与整体 CFD 加速比的差异。</li>
+    </ul>
+  </section>
+
+  <!-- Notes -->
+  <section id="notes">
+    <h2>NOTES · 技术笔记</h2>
+    <p class="muted">
+      这里会持续更新 CFD / CAE / HPC / 芯片 / AI 相关的技术笔记。
+      当前只是示例条目，后续会替换为真实文章链接。
+    </p>
+    <ul>
+      <li><strong>哈希校验在 CFD 网格管理中的应用</strong> —— 如何在工程环境中可靠地检测网格文件被意外修改。</li>
+      <li><strong>隐式 FVM 求解器的稀疏矩阵结构与求解器选择</strong> —— 从谱特性和带宽角度看求解策略。</li>
+      <li><strong>在国产芯片上部署 CFD 求解器的思考</strong> —— 算子拆分、数据布局与带宽瓶颈。</li>
+      <li><strong>AI 如何参与 CAE 开发而不过度“黑盒化”</strong> —— 一些实践和边界讨论。</li>
+    </ul>
+  </section>
+
+  <!-- Tools -->
+  <section id="tools">
+    <h2>TOOLS · 工具与小项目</h2>
+    <p class="muted">
+      计划在此整理一些与 CFD/CAE 工作流相关的小工具，例如网格哈希校验、算例模板生成、简单的在线计算器等。
+      当前仅预留版块，后续会陆续补充。
+    </p>
+    <ul>
+      <li>CFD 网格文件哈希校验工具（计划中）</li>
+      <li>典型发动机部件算例模板（计划中）</li>
+      <li>简单流动参数计算器（雷诺数 / 马赫数 / 特征时间尺度）（计划中）</li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>CONTACT · 联系方式</h2>
+    <p>如果你对 CFD / CAE 求解器、HPC 与稀疏矩阵求解、国产芯片上的部署，或者 AI 在这些方向上的应用有兴趣，欢迎交流。</p>
+    <p>
+      <strong>Email：</strong>
+      <a href="mailto:xubinlab@gmail.com">xubinlab@gmail.com</a>
+      <br />
+      <strong>GitHub：</strong>
+      <a href="https://github.com/xubinlab" target="_blank" rel="noopener noreferrer">github.com/xubinlab</a>
+    </p>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Xu Bin Lab · CFD · HPC · Chips · AI
+</footer>
+
+<script>
+  // 自动更新年份
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
