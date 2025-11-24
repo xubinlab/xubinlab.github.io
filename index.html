@@ -107,49 +107,17 @@
   <section id="tech-stack">
     <h2>TECH STACK · 技术体系</h2>
 
-    <h3>1. 物理与建模（Physics &amp; Simulation Modeling）</h3>
-    <ul>
-      <li>流体力学基础：可压缩/不可压缩流、边界层、激波、涡结构。</li>
-      <li>守恒方程与控制方程：质量、动量、能量方程的积分/微分形式。</li>
-      <li>湍流建模：RANS（k–ε/k–ω/SST）、LES/DES 的工程适用性与局限。</li>
-      <li>多物理：多相流（VOF / Level-Set / Euler–Euler / Euler–Lagrange）、传热传质、燃烧与反应流。</li>
-      <li>典型工程场景：风扇、压气机、燃烧室、涡轮等部件的需求差异。</li>
-    </ul>
+    <h3><a href="/tech-stack/physics-modeling.html">1. 物理与建模（Physics &amp; Simulation Modeling）</a></h3>
+...
+<h3><a href="/tech-stack/numerics-hpc.html">2. 数值方法、求解器与 HPC（Numerics, Solvers &amp; HPC）</a></h3>
+...
+<h3><a href="/tech-stack/software-workflow.html">3. 软件工程与计算流程（Software Engineering &amp; Workflow）</a></h3>
+...
+<h3><a href="/tech-stack/chips-system.html">4. 芯片与系统集成（Chips &amp; System Integration）</a></h3>
+...
+<h3><a href="/tech-stack/ai-sim-coding.html">5. AI for Simulation / Coding / Chips</a></h3>
 
-    <h3>2. 数值方法、求解器与 HPC（Numerics, Solvers &amp; HPC）</h3>
-    <ul>
-      <li>离散方法：FVM/FEM/DG 等离散框架，时间推进（显式/隐式、多步法/Runge–Kutta）。</li>
-      <li>求解器设计：压力–速度耦合、完全耦合、非线性迭代与收敛判据。</li>
-      <li>稀疏线性系统：Jacobian 结构、预条件、CG/BiCGStab/GMRES 等 Krylov 子空间方法。</li>
-      <li>HPC：MPI/OpenMP/混合并行、网格划分与负载均衡、大规模算例下的带宽与缓存行为。</li>
-      <li>性能与鲁棒性：在迭代轨迹、谱性质和工程可用性之间寻找平衡。</li>
-    </ul>
 
-    <h3>3. 软件工程与计算流程（Software Engineering &amp; Workflow）</h3>
-    <ul>
-      <li>代码架构：现代 C++ 风格的 CFD 求解器架构设计，模块化与可扩展性。</li>
-      <li>测试与验证：单元测试、回归测试、算例库管理、物理量与残差的监控。</li>
-      <li>计算流程：前处理（网格/边界条件）、求解控制、后处理与数据管理。</li>
-      <li>工具化：脚本自动化、配置管理、结果复现与项目模板化。</li>
-      <li>与商业/开源软件的协同：网格格式、后处理接口、数据交换。</li>
-    </ul>
-
-    <h3>4. 芯片与系统集成（Chips &amp; System Integration）</h3>
-    <ul>
-      <li>国产芯片架构理解：计算阵列、内存层次、带宽与延迟特性（在不涉密前提下）。</li>
-      <li>算子映射：哪些算子适合上芯片（矩阵–向量、多右端、多网格），哪些应留在 CPU 侧。</li>
-      <li>数据布局：稀疏矩阵存储格式、访存模式与 cache 友好布局。</li>
-      <li>系统集成：从 CFD 求解器到软硬件一体计算平台的接口设计与调度逻辑。</li>
-      <li>性能对标：与常规 CPU/GPU 的加速比、能效、规模扩展的分析。</li>
-    </ul>
-
-    <h3>5. AI for Simulation / Coding / Chips</h3>
-    <ul>
-      <li>AI + 仿真：基于先验物理与数值分析的模型选择、参数调优、算例分类等。</li>
-      <li>AI + Coding：利用 LLM 等工具辅助 C++/Fortran 开发、重构、测试样例生成。</li>
-      <li>AI + 芯片：利用 AI 做瓶颈识别、参数搜索、任务调度策略探索（而非替代架构设计）。</li>
-      <li>边界与约束：坚持物理约束、数值稳定性与工程可验证性作为第一原则。</li>
-    </ul>
   </section>
 
   <!-- Projects -->
