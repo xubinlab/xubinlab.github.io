@@ -20,7 +20,7 @@
       <li><a href="/tools/">工具</a></li>
       <li><a href="/misc/">杂谈</a></li>
       <li><a href="/#contact">联系</a></li>
-      <li class="lang-switch"><a href="/zh/">中文</a></li>
+      <li class="lang-switch"><a href="/en/">EN</a></li>
     </ul>
   </nav>
 </header>
@@ -30,46 +30,48 @@
     <h2>NOTES · 技术笔记</h2>
     <p class="muted">
       这里主要记录 CFD / 仿真 / HPC / 芯片 / AI 等相关的技术内容。
+      每篇文章都会尽量写清楚：问题是什么、假设条件是什么、分析过程和结论是什么。
       分类只是为了方便查找，不代表严格的学科边界。
     </p>
 
-    <h3>CFD & 数值方法</h3>
-    <ul>
-      <!-- 以后这里挂 CFD 理论 / 数值分析相关的笔记 -->
-      <!-- <li><a href="2025-xx-xx-some-cfd-topic.html">某个 CFD 主题笔记</a> <span class="muted">· 2025-xx-xx</span></li> -->
-    </ul>
-
-    <h3>HPC / 求解器 / 性能优化</h3>
-    <ul>
-      <!-- 例如隐式求解、预条件、并行优化等 -->
-      <!-- <li><a href="2025-xx-xx-solver-tuning.html">某个求解器优化笔记</a> <span class="muted">· 2025-xx-xx</span></li> -->
-    </ul>
-
-    <h3>CAE / FEA / 结构类</h3>
+    <h3>1. 物理与建模 / CFD &amp; CAE</h3>
     <ul>
       <li>
-        <a href="2025-fea-struct-solvers.html">
+        <a href="/notes/2025-fea-struct-solvers.html">
           结构有限元商业软件的功能定位与适用场景（个人笔记）
         </a>
-        <span class="muted"> · 2025-11-22</span>
+        <span class="muted"> · 2025-11-22 · 结构 / FEA / 商业软件认知</span>
       </li>
+      <!-- 以后：CFD 物理建模、多相/燃烧、发动机部件建模等笔记挂在这里 -->
     </ul>
 
-    <h3>开源工具与软件调研</h3>
+    <h3>2. 数值方法 · 求解器 · HPC</h3>
+    <ul>
+      <!-- 例如：时间推进、离散格式、Krylov 求解器、多网格、收敛与稳定性分析等 -->
+      <!-- <li><a href="/notes/2025-xx-xx-solver-tuning.html">某个求解器在发动机算例中的调优与坑</a> <span class="muted"> · 2025-xx-xx</span></li> -->
+    </ul>
+
+    <h3>3. 软件工程与计算流程</h3>
+    <ul>
+      <!-- 比如：CI/CD、网格哈希校验、算例目录结构、自动化脚本、抓包分析等 -->
+      <!-- <li><a href="/notes/2025-xx-xx-hash-grid-check.html">CFD 网格文件哈希校验在工程流程中的应用</a> <span class="muted"> · 2025-xx-xx</span></li> -->
+    </ul>
+
+    <h3>4. 芯片与系统集成（Chips &amp; System Integration）</h3>
+    <ul>
+      <!-- 比如：稀疏矩阵在芯片上的数据布局、带宽瓶颈分析、算子映射策略等 -->
+      <!-- <li><a href="/notes/2025-xx-xx-chip-sparse-mapping.html">某类稀疏矩阵在国产芯片上的算子映射实践</a> <span class="muted"> · 2025-xx-xx</span></li> -->
+    </ul>
+
+    <h3>5. AI / 工具 / 工作流 &amp; 开源调研</h3>
     <ul>
       <li>
-        <a href="2025-open-source-sim-survey.html">
+        <a href="/notes/2025-open-source-sim-survey.html">
           开源仿真 / CAE 软件调研（第一版）
         </a>
-        <span class="muted"> · 2025-11-24</span>
+        <span class="muted"> · 2025-11-24 · 开源工具 / 仿真平台</span>
       </li>
-    </ul>
-    
-
-    <h3>工具与工作流（Tools & Workflow）</h3>
-    <ul>
-      <!-- 比如网格哈希校验、测试流程、CI/CD、抓包等系列笔记 -->
-      <!-- <li><a href="2025-xx-xx-hash-grid-check.html">CFD 网格文件哈希校验在工程流程中的应用</a> <span class="muted"> · 2025-xx-xx</span></li> -->
+      <!-- 将来：AI 辅助仿真、AI 辅助 coding、工具链搭建等都可以挂在这里 -->
     </ul>
   </section>
 </main>
