@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>项目案例 | Xu Bin Lab</title>
+  <title>工具与小项目 | Xu Bin Lab</title>
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
@@ -26,32 +26,33 @@
 </header>
 
 <main>
-  <section id="projects">
-    <h2>PROJECTS · 项目与案例</h2>
+  <section id="tools">
+    <h2>TOOLS · 工具与小项目</h2>
     <p class="muted">
-      这里整理一些有代表性的项目案例，每个案例尽量说明：问题背景、目标、技术方案、结果和反思。
+      这里整理一些和 CFD / 仿真工作流相关的小工具、脚本和模板。
+      可以是简单的 Python/命令行工具，也可以是配置模板、脚本片段。
     </p>
 
-    <h3>CFD 求解器与验证</h3>
+    <h3>命令行 / 脚本工具</h3>
     <ul>
-      <!-- 比如 RAE2822 验证、压气机级算例等 -->
-      <!-- <li><a href="2025-xx-xx-rae2822.html">RAE2822 外流算例的求解器验证</a></li> -->
+      <li>CFD 网格文件哈希校验脚本（计划中）</li>
+      <!-- <li><a href="hash-check-tool.html">CFD 网格文件哈希校验工具</a></li> -->
     </ul>
 
-    <h3>HPC 与芯片部署</h3>
+    <h3>配置模板 / 项目脚手架</h3>
     <ul>
-      <!-- <li><a href="2025-xx-xx-chip-deploy-implicit.html">隐式 CFD 求解器在国产芯片上的部署与性能分析</a></li> -->
+      <!-- 比如你的 SU2 测试框架、CFD case 模板 -->
     </ul>
 
-    <h3>AI + 仿真 / 工作流</h3>
+    <h3>在线小工具（未来）</h3>
     <ul>
-      <!-- <li><a href="2025-xx-xx-ai-scheduling.html">AI 辅助求解器调度与参数搜索（探索）</a></li> -->
+      <li>流动参数计算器（雷诺数 / 马赫数 / 特征时间尺度）（计划中）</li>
     </ul>
   </section>
 </main>
 
 <footer>
-  © <span id="year"></span> Xu Bin Lab · Projects
+  © <span id="year"></span> Xu Bin Lab · Tools
 </footer>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();

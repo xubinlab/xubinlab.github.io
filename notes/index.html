@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Notes | Xu Bin Lab</title>
+  <title>技术笔记 | Xu Bin Lab</title>
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
@@ -13,11 +13,12 @@
       <a href="/" style="color:inherit;text-decoration:none;">XU BIN LAB</a>
     </div>
     <ul>
-      <li><a href="/">首页</a></li>
-      <li><a href="/#tech-stack">技术体系</a></li>
-      <li><a href="/#projects">项目</a></li>
-      <li><a href="/notes/">笔记</a></li>
-      <li><a href="/#tools">工具</a></li>
+      <li><a href="/#about">关于</a></li>
+      <li><a href="/tech-stack/">技术体系</a></li>
+      <li><a href="/projects/">项目</a></li>
+      <li><a href="/notes/">技术笔记</a></li>
+      <li><a href="/tools/">工具</a></li>
+      <li><a href="/misc/">杂谈</a></li>
       <li><a href="/#contact">联系</a></li>
       <li class="lang-switch"><a href="/en/">EN</a></li>
     </ul>
@@ -28,10 +29,23 @@
   <section id="notes">
     <h2>NOTES · 技术笔记</h2>
     <p class="muted">
-      这里列出我整理过的部分技术笔记。大部分是围绕 CFD / 仿真 / HPC / 芯片 / AI 等话题，对公开资料和实际工作经验的个人归纳。
-      所有内容都以“说明前提和边界”为目标，不当官方结论。
+      这里主要记录 CFD / 仿真 / HPC / 芯片 / AI 等相关的技术内容。
+      分类只是为了方便查找，不代表严格的学科边界。
     </p>
 
+    <h3>CFD & 数值方法</h3>
+    <ul>
+      <!-- 以后这里挂 CFD 理论 / 数值分析相关的笔记 -->
+      <!-- <li><a href="2025-xx-xx-some-cfd-topic.html">某个 CFD 主题笔记</a> <span class="muted">· 2025-xx-xx</span></li> -->
+    </ul>
+
+    <h3>HPC / 求解器 / 性能优化</h3>
+    <ul>
+      <!-- 例如隐式求解、预条件、并行优化等 -->
+      <!-- <li><a href="2025-xx-xx-solver-tuning.html">某个求解器优化笔记</a> <span class="muted">· 2025-xx-xx</span></li> -->
+    </ul>
+
+    <h3>CAE / FEA / 结构类</h3>
     <ul>
       <li>
         <a href="2025-fea-struct-solvers.html">
@@ -39,12 +53,12 @@
         </a>
         <span class="muted"> · 2025-11-22</span>
       </li>
-      <!-- 以后新笔记就在这里追加一行：
-      <li>
-        <a href="2025-xx-yy-some-topic.html">标题</a>
-        <span class="muted"> · 2025-xx-yy</span>
-      </li>
-      -->
+    </ul>
+
+    <h3>工具与工作流（Tools & Workflow）</h3>
+    <ul>
+      <!-- 比如网格哈希校验、测试流程、CI/CD、抓包等系列笔记 -->
+      <!-- <li><a href="2025-xx-xx-hash-grid-check.html">CFD 网格文件哈希校验在工程流程中的应用</a> <span class="muted"> · 2025-xx-xx</span></li> -->
     </ul>
   </section>
 </main>
@@ -52,7 +66,6 @@
 <footer>
   © <span id="year"></span> Xu Bin Lab · Notes
 </footer>
-
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
