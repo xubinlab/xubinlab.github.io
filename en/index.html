@@ -4,7 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Xu Bin Lab | CFD · HPC · Chips · AI</title>
+  <meta name="description" content="Xu Bin: CFD solver and engineering simulation engineer. Specialized in numerical methods, HPC & sparse matrix solvers, and deployment on custom chips with AI-assisted development." />
+  <meta name="keywords" content="CFD, HPC, simulation, numerical methods, sparse matrix, chip deployment, AI, computational fluid dynamics, engineering simulation" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://xubinlab.com/en/" />
+  <meta property="og:title" content="Xu Bin Lab | CFD · HPC · Chips · AI" />
+  <meta property="og:description" content="CFD solver and engineering simulation engineer. Specialized in numerical methods, HPC & sparse matrix solvers, and deployment on custom chips." />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Xu Bin Lab | CFD · HPC · Chips · AI" />
+  <meta name="twitter:description" content="CFD solver and engineering simulation engineer. Specialized in numerical methods, HPC & sparse matrix solvers." />
+  
   <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/" />
+  <link rel="alternate" hreflang="en" href="https://xubinlab.com/en/" />
 </head>
 <body>
 <header>
@@ -13,33 +29,303 @@
       <a href="/" style="color:inherit;text-decoration:none;">XU BIN LAB</a>
     </div>
     <ul>
-      <li><a href="/">Home (中文)</a></li>
-      <li><a href="/#tech-stack">Tech Stack</a></li>
-      <li><a href="/projects/">Projects</a></li>
-      <li><a href="/notes/">Notes</a></li>
-      <li><a href="/#contact">Contact</a></li>
-      <li class="lang-switch"><a href="/en/">EN</a></li>
+      <li><a href="/en/#about">About</a></li>
+      <li><a href="/en/tech-stack/">Tech Stack</a></li>
+      <li><a href="/en/projects/">Projects</a></li>
+      <li><a href="/en/notes/">Notes</a></li>
+      <li><a href="/en/tools/">Tools</a></li>
+      <li><a href="/en/misc/">Misc</a></li>
+      <li><a href="/en/#contact">Contact</a></li>
+      <li class="lang-switch"><a href="/">中文</a></li>
     </ul>
   </nav>
 </header>
 
 <main>
-  <section class="hero">
+  <!-- Hero -->
+  <section class="hero" id="home">
     <h1>Xu Bin</h1>
     <p class="hero-subtitle">
-      This is an English landing page under construction.
-      For now, most of the detailed content is in Chinese at <a href="/">xubinlab.com</a>.
-      I will gradually add English summaries of my CFD / HPC / chip / AI-related work here.
+      CFD solver and engineering simulation engineer,<br />
+      working on numerical methods, solver implementation, HPC & sparse matrix solvers,<br />
+      and deployment & performance optimization on custom chips, with some work combining AI-assisted development and analysis.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">CFD Solvers</span>
+      <span class="tag">Turbulence &amp; Engine Simulation</span>
+      <span class="tag">HPC &amp; Sparse Solvers</span>
+      <span class="tag">Custom Chips</span>
+      <span class="tag">AI-assisted Simulation &amp; Coding</span>
+      <span class="tag">C++ · Fortran</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn" href="#tech-stack">View Tech Stack</a>
+      <a class="btn secondary" href="#projects">View Projects</a>
+      <a class="btn secondary" href="#notes">Read Notes</a>
+    </div>
+
+    <div class="focus-grid" style="margin-top: 1.4rem;">
+      <div class="focus-card">
+        <h3>CFD Solver Development</h3>
+        <p>From equation modeling, numerical schemes, boundary conditions to overall solution workflow, participating in/leading the design and implementation of CFD solvers, mainly for complex internal flow scenarios such as aircraft engines.</p>
+      </div>
+      <div class="focus-card">
+        <h3>HPC &amp; Sparse Matrix Solvers</h3>
+        <p>Research on solution strategies for sparse linear systems in implicit solvers, running large-scale cases with multi-core parallel and high-performance libraries, focusing on convergence characteristics, bandwidth utilization, and overall simulation time.</p>
+      </div>
+      <div class="focus-card">
+        <h3>Chip Deployment &amp; Hardware-Software Co-Design</h3>
+        <p>Deploying and optimizing CFD solvers on custom chips, matching existing architecture and memory hierarchy from algorithm and data layout perspectives, aiming for stable and reproducible acceleration under engineering-usable conditions.</p>
+      </div>
+      <div class="focus-card">
+        <h3>AI-Assisted Simulation &amp; Development</h3>
+        <p>Exploring AI tools to assist simulation development, such as model selection, solver parameter tuning, code writing and refactoring, log and performance data analysis, while keeping physical constraints, numerical stability, and engineering verifiability as priorities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>ABOUT</h2>
+    <div class="two-col">
+      <div>
+        <p>
+          I am an engineering-oriented CFD / simulation engineer, currently working at a custom chip company, 
+          focusing on CFD solver and simulation platform development related to aircraft engines.
+          My work includes numerical methods and solver implementation, sparse matrix solving under implicit formats, 
+          and deployment and performance optimization on custom chips.
+        </p>
+        <p>
+          Both my undergraduate and graduate studies were in mechanics and fluid dynamics. 
+          I also participated in CAE-related projects in structures and architecture earlier.
+          Now my focus is mainly on CFD, HPC, and simulation computing on chips.
+        </p>
+        <p>
+          This website systematically organizes my technical system, project experience, and problem-solving approaches, 
+          also serving as a transparent technical portfolio for external communication and job applications.
+        </p>
+      </div>
+      <div>
+        <h3>Current Focus Areas</h3>
+        <ul>
+          <li>CFD solvers (especially full-flowpath and complex internal flows in engines)</li>
+          <li>Sparse matrix solving and HPC parallel optimization under implicit formats</li>
+          <li>Simulation deployment and hardware-software co-design on custom chips</li>
+          <li>AI + Simulation / AI + Coding / AI + Chip Performance Analysis</li>
+        </ul>
+        <h3>Quick Links</h3>
+        <ul class="list-inline">
+          <li><a href="#tech-stack">Tech Stack</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#notes">Notes</a></li>
+          <li><a href="#tools">Tools</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section id="tech-stack">
+    <h2>TECH STACK</h2>
+
+    <h3><a href="/en/tech-stack/physics-modeling.html">1. Physics &amp; Simulation Modeling</a></h3>
+    <p>
+      From mathematical foundations to governing equations, from turbulence / multiphase / combustion models 
+      to specific engineering scenarios (fans, compressors, combustors, turbines, etc.).
+      More about "physical understanding + modeling trade-offs" rather than usage instructions for specific solvers.
+    </p>
+
+    <h3><a href="/en/tech-stack/numerics-hpc.html">2. Numerical Methods, Solvers &amp; HPC</a></h3>
+    <p>
+      Discretization methods (FVM/FEM/DG), time integration, linear / nonlinear solvers, preconditioning, stability;
+      then to parallel partitioning, load balancing, cache / bandwidth behavior—mainly focusing on "how algorithms map to machines."
+    </p>
+
+    <h3><a href="/en/tech-stack/software-workflow.html">3. Software Engineering &amp; Workflow</a></h3>
+    <p>
+      Including: software survey and understanding, architecture design of custom code, coding standards and testing, 
+      case libraries and CI/CD, and how a complete "preprocessing → solving → postprocessing → HPC job" workflow is designed and evolved.
+    </p>
+
+    <h3><a href="/en/tech-stack/chips-system.html">4. Chips &amp; System Integration</a></h3>
+    <p>
+      Without disclosing confidential information, discussing how to understand custom chip architecture from operator / data layout perspectives, 
+      and the process of integrating CFD / CAE solvers with custom chips and system platforms.
+    </p>
+
+    <h3><a href="/en/tech-stack/ai-sim-coding.html">5. AI for Simulation / Coding / Chips</a></h3>
+    <p>
+      The role of AI in simulation (model/condition recommendations, result interpretation), in coding (code generation, testing, refactoring), 
+      and possibilities in chip performance analysis / scheduling strategy exploration. More about "how to use AI in existing workflows" rather than building large models.
+    </p>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>PROJECTS</h2>
+    <p class="muted">
+      Representative project cases will be gradually added here. Each case follows the structure: 
+      "Problem Background → Goals → Technical Solution → Results → Reflection".
+      Currently only structural examples are provided for future content.
+    </p>
+
+    <h3>Example: Aircraft Engine Full-Flowpath Simulation Platform (Hardware-Software Co-Design)</h3>
+    <ul>
+      <li><strong>Problem Background:</strong> Aerodynamic and thermal characteristics evaluation of multi-stage fans, compressors, combustors, and turbines, with high requirements for both accuracy and computation time.</li>
+      <li><strong>Goals:</strong> Obtain engineering-acceptable accuracy results within given computing power and time budgets, and achieve significant and reproducible acceleration on custom chips.</li>
+      <li><strong>My Role:</strong> Solver design and implementation, implicit format and sparse matrix solver optimization, hardware-software co-design discussion and implementation, testing and benchmarking.</li>
+      <li><strong>Technical Highlights:</strong> Equation non-dimensionalization, RANS/LES model selection, Jacobian construction, Krylov solvers and preconditioning, MPI parallelization, chip-side matrix operator deployment.</li>
+      <li><strong>Results (Illustrative):</strong> On several internal test cases, compared with commercial software, main engineering indicators showed deviations within engineering-acceptable ranges; under the same core count, significant acceleration was achieved for some cases (specific data will be placed on dedicated pages).</li>
+    </ul>
+  </section>
+
+  <!-- Notes -->
+  <section id="notes">
+    <h2>NOTES</h2>
+    <p class="muted">
+      Technical notes on CFD / simulation / HPC / chips / AI will be continuously updated here.
+      Below is an example note showing the general style of subsequent articles: 
+      following a "Problem—Analysis—Conclusion" structure, clearly stating premises and boundaries.
+    </p>
+
+    <article class="note">
+      <h3>Example: Functional Positioning and Application Scenarios of Commercial FEA Software (Personal Notes)</h3>
+      <p class="muted">
+        This is a rough summary based on public information and personal understanding, 
+        mainly to help clarify the general positioning of common structural FEA / impact software.
+        Not an official evaluation, nor representing any vendor's position, 
+        only for communication and self-check: when encountering certain types of problems, 
+        which software I would think of, and their respective strengths and obvious weaknesses.
+      </p>
+
+      <h4>1. Abaqus: Nonlinear &amp; General Structural Analysis</h4>
+      <ul>
+        <li><strong>Keywords:</strong> Nonlinear, general FEA.</li>
+        <li><strong>Typical Strengths:</strong> Good solver robustness and functional coverage in geometric/material/contact nonlinear problems, suitable for complex structural static/dynamic and multi-step load analysis; strong Python interface extensibility.</li>
+        <li><strong>Common Impression:</strong> In many engineers' experience, when doing structural nonlinear analysis, Abaqus parameter configuration is relatively "worry-free," with better convergence experience than some general software.</li>
+        <li><strong>Limitations &amp; Cost:</strong> Large software system, relatively steep learning curve; while capable of extreme dynamic problems like impact/explosion, the industry usually has more specialized choices.</li>
+        <li><strong>When to Consider:</strong> Complex nonlinear structural problems, system-level analysis requiring most processes within the same platform.</li>
+      </ul>
+
+      <h4>2. Ansys: Multi-Physics &amp; Platform Integration</h4>
+      <ul>
+        <li><strong>Keywords:</strong> Multi-physics, multi-module.</li>
+        <li><strong>Typical Strengths:</strong> Through acquisitions and integration, formed multiple modules including structures, fluids, electromagnetics, suitable for multi-physics coupling and cross-disciplinary engineering problems.</li>
+        <li><strong>Features:</strong> APDL language is highly programmable, used by many engineers as an "engineering scripting environment"; mature applications in fluids, electromagnetics, transient dynamics, etc.</li>
+        <li><strong>Relative Weaknesses:</strong> Some specialized fields (such as geotechnical, some highly nonlinear analysis) may not be the first choice; thermal analysis, geotechnical, etc. need to be judged based on specific versions and modules.</li>
+        <li><strong>When to Consider:</strong> Projects naturally involve multi-physics coupling, or when the team already has a complete Ansys ecosystem (preprocessing, postprocessing, interfaces are all smooth).</li>
+      </ul>
+
+      <h4>3. LS-DYNA: Impact &amp; Collision</h4>
+      <ul>
+        <li><strong>Keywords:</strong> Explicit dynamics, impact, collision, forming.</li>
+        <li><strong>Typical Strengths:</strong> One of the industry benchmarks for highly nonlinear dynamic problems such as high-speed collisions, explosions, metal forming, with very rich material models and element types.</li>
+        <li><strong>Features:</strong> Long history, early use in defense-related problems, with extensive engineering validation; built-in fluid solver, capable of some fluid-structure coupling.</li>
+        <li><strong>Limitations:</strong> Complex model configuration under extreme problems, high user experience requirements; preprocessing/postprocessing without supporting tools (such as HyperMesh/HyperView) will reduce experience.</li>
+        <li><strong>When to Consider:</strong> Automotive collision, structural impact, safety-related scenarios, or occasions requiring explicit dynamic solvers.</li>
+      </ul>
+
+      <h4>4. MSC.Dytran: Highly Nonlinear Fluid-Structure Coupling</h4>
+      <ul>
+        <li><strong>Keywords:</strong> Fluid-structure coupling, highly nonlinear.</li>
+        <li><strong>Typical Positioning:</strong> Based on LS-DYNA framework, introducing PISCES fluid/fluid-structure capabilities, focusing on highly nonlinear fluid-structure coupling problems.</li>
+        <li><strong>Advantages:</strong> Relatively mature application experience for certain fluid-structure coupling conditions.</li>
+        <li><strong>Limitations:</strong> Relatively limited material models, weak handling of geotechnical materials; lack of 2D/axisymmetric increases computational cost; compared to the latest LS-DYNA, somewhat conservative in contact algorithms, etc.</li>
+      </ul>
+
+      <h4>5. ADINA: Nonlinear Solution Strategies</h4>
+      <ul>
+        <li><strong>Keywords:</strong> Special solution methods, nonlinear convergence.</li>
+        <li><strong>Typical Strengths:</strong> Features in solution strategies for complex nonlinear problems (contact, plasticity, failure), such as various nonlinear controls and automatic step size adjustment, aiming to improve convergence and stability.</li>
+        <li><strong>Engineering Significance:</strong> Provides solution choices different from mainstream software for difficult-to-converge structural nonlinear problems.</li>
+      </ul>
+
+      <h4>6. Nastran: Linear Structures &amp; Aerospace Background</h4>
+      <ul>
+        <li><strong>Keywords:</strong> Linear structural analysis, aerospace engineering.</li>
+        <li><strong>Typical Strengths:</strong> Long history, widely used in aerospace and other fields, with extensive validation in linear FEA and dynamics analysis, good reputation for solution efficiency.</li>
+        <li><strong>Features:</strong> Bulk data format is flexible but not beginner-friendly; due to large user base, engineering experience and materials are very rich.</li>
+        <li><strong>When to Consider:</strong> Linear/lightly nonlinear structural analysis, especially in industries with existing Nastran workflows (aerospace, mechanical, etc.).</li>
+      </ul>
+
+      <h4>7. Brief Impressions of Other Software</h4>
+      <ul>
+        <li><strong>ALGOR:</strong> Emphasizes ease of learning and use, user-friendly interface, suitable as a rapid analysis tool for medium-scale engineering.</li>
+        <li><strong>COSMOS:</strong> Known for multi-physics and solution speed, suitable for rapid iteration and integration into CAD/PLM environments.</li>
+        <li><strong>MARC:</strong> Very strong nonlinear capabilities, solution speed superior to peers in some conditions, but input files and operation interface have high user requirements, more suitable for experienced users.</li>
+        <li><strong>Radioss:</strong> Many customers in explicit dynamics and automotive collision, good overall workflow experience when paired with Altair's own preprocessing/postprocessing.</li>
+        <li><strong>OptiStruct:</strong> Very prominent in structural optimization, topology optimization, lattice structure design; usable as a general implicit solver, but market positioning is more "optimization expert."</li>
+        <li><strong>HyperMesh:</strong> Known for preprocessing and mesh generation, fine control over mesh quality and underlying control, standard configuration for many automotive/structural teams.</li>
+      </ul>
+
+      <h4>8. Summary: How to Use These "Labels" Without Over-Simplification</h4>
+      <ul>
+        <li>Different software have their own historical baggage and strengths; "A is better" often only holds under specific problem categories and user experience.</li>
+        <li>When actually selecting, usually consider: problem type (linear/nonlinear/impact/fluid-structure), existing workflow (what the team is already using), and whether future expansion to multi-physics is needed.</li>
+        <li>This is just a personal "label table" for learning, convenient for quick categorization in the mind: when encountering an engineering requirement, which candidate tools should be considered, and their possible pitfalls.</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Tools -->
+  <section id="tools">
+    <h2>TOOLS</h2>
+    <p class="muted">
+      Planning to organize some small tools related to CFD / simulation workflows here, 
+      such as mesh hash verification, case template generation, simple online calculators, etc.
+      Currently only placeholder sections, will be gradually supplemented.
+    </p>
+    <ul>
+      <li>CFD mesh file hash verification tool (planned)</li>
+      <li>Typical engine component case templates (planned)</li>
+      <li>Flow parameter calculator (Reynolds number / Mach number / characteristic time scale) (planned)</li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>CONTACT</h2>
+    <p>If you are interested in CFD solvers, engineering simulation, HPC &amp; sparse matrix solvers, deployment on custom chips, or AI applications in these areas, feel free to reach out.</p>
+    <p>
+      <strong>Email:</strong>
+      <a href="mailto:xubinlab@gmail.com">xubinlab@gmail.com</a>
+      <br />
+      <strong>GitHub:</strong>
+      <a href="https://github.com/xubinlab" target="_blank" rel="noopener noreferrer">github.com/xubinlab</a>
     </p>
   </section>
 </main>
 
 <footer>
-  © <span id="year"></span> Xu Bin Lab
+  © <span id="year"></span> Xu Bin Lab · CFD · HPC · Chips · AI
 </footer>
 
+<!-- Back to Top Button -->
+<button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+  ↑
+</button>
+
 <script>
+  // Auto-update year
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Back to top button
+  const backToTopButton = document.getElementById('back-to-top');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 </script>
 </body>
 </html>

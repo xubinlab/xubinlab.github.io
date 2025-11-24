@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Technical Notes | Xu Bin Lab</title>
+  <meta name="description" content="Technical notes on CFD, simulation, HPC, chips, and AI applications." />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/notes/" />
+  <link rel="alternate" hreflang="en" href="https://xubinlab.com/en/notes/" />
+</head>
+<body>
+<header>
+  <nav>
+    <div class="brand">
+      <a href="/" style="color:inherit;text-decoration:none;">XU BIN LAB</a>
+    </div>
+    <ul>
+      <li><a href="/en/#about">About</a></li>
+      <li><a href="/en/tech-stack/">Tech Stack</a></li>
+      <li><a href="/en/projects/">Projects</a></li>
+      <li><a href="/en/notes/">Notes</a></li>
+      <li><a href="/en/tools/">Tools</a></li>
+      <li><a href="/en/misc/">Misc</a></li>
+      <li><a href="/en/#contact">Contact</a></li>
+      <li class="lang-switch"><a href="/">中文</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="notes">
+    <h2>NOTES</h2>
+    <p class="muted">
+      Technical notes on CFD / simulation / HPC / chips / AI will be continuously updated here.
+      Categories are for convenience only and do not represent strict disciplinary boundaries.
+    </p>
+
+    <h3>CFD &amp; Numerical Methods</h3>
+    <ul>
+      <!-- Future CFD theory / numerical analysis notes will be listed here -->
+    </ul>
+
+    <h3>HPC / Solvers / Performance Optimization</h3>
+    <ul>
+      <!-- For example: implicit solvers, preconditioning, parallel optimization, etc. -->
+    </ul>
+
+    <h3>CAE / FEA / Structures</h3>
+    <ul>
+      <!-- Structure-related notes -->
+    </ul>
+
+    <h3>Open Source Tools &amp; Software Survey</h3>
+    <ul>
+      <!-- Open source software survey notes -->
+    </ul>
+
+    <h3>Tools &amp; Workflow</h3>
+    <ul>
+      <!-- For example: mesh hash verification, testing workflows, CI/CD, etc. -->
+    </ul>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Xu Bin Lab · Notes
+</footer>
+
+<button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+  ↑
+</button>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const backToTopButton = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
+

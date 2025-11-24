@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tech Stack Overview | Xu Bin Lab</title>
+  <meta name="description" content="A breakdown of my technical capabilities: Physics & Modeling, Numerical Methods & HPC, Software Engineering, Chip Integration, and AI Applications." />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/tech-stack/" />
+  <link rel="alternate" hreflang="en" href="https://xubinlab.com/en/tech-stack/" />
+</head>
+<body>
+<header>
+  <nav>
+    <div class="brand">
+      <a href="/" style="color:inherit;text-decoration:none;">XU BIN LAB</a>
+    </div>
+    <ul>
+      <li><a href="/en/#about">About</a></li>
+      <li><a href="/en/tech-stack/">Tech Stack</a></li>
+      <li><a href="/en/projects/">Projects</a></li>
+      <li><a href="/en/notes/">Notes</a></li>
+      <li><a href="/en/tools/">Tools</a></li>
+      <li><a href="/en/misc/">Misc</a></li>
+      <li><a href="/en/#contact">Contact</a></li>
+      <li class="lang-switch"><a href="/">中文</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="tech-stack">
+    <h2>TECH STACK OVERVIEW</h2>
+    <p class="muted">
+      This page is a breakdown of "what I actually know." Each section will have more detailed topic pages and note links,
+      making it easy for others to quickly determine which levels we can have meaningful conversations about.
+    </p>
+
+    <h3><a href="/en/tech-stack/physics-modeling.html">1. Physics &amp; Simulation Modeling</a></h3>
+    <p>
+      From mathematical foundations to governing equations, from turbulence / multiphase / combustion models 
+      to specific engineering scenarios (fans, compressors, combustors, turbines, etc.).
+      More about "physical understanding + modeling trade-offs" rather than usage instructions for specific solvers.
+    </p>
+
+    <h3><a href="/en/tech-stack/numerics-hpc.html">2. Numerical Methods, Solvers &amp; HPC</a></h3>
+    <p>
+      Discretization methods (FVM/FEM/DG), time integration, linear / nonlinear solvers, preconditioning, stability;
+      then to parallel partitioning, load balancing, cache / bandwidth behavior—mainly focusing on "how algorithms map to machines."
+    </p>
+
+    <h3><a href="/en/tech-stack/software-workflow.html">3. Software Engineering &amp; Workflow</a></h3>
+    <p>
+      Including: software survey and understanding, architecture design of custom code, coding standards and testing, 
+      case libraries and CI/CD, and how a complete "preprocessing → solving → postprocessing → HPC job" workflow is designed and evolved.
+    </p>
+
+    <h3><a href="/en/tech-stack/chips-system.html">4. Chips &amp; System Integration</a></h3>
+    <p>
+      Without disclosing confidential information, discussing how to understand custom chip architecture from operator / data layout perspectives, 
+      and the process of integrating CFD / CAE solvers with custom chips and system platforms.
+    </p>
+
+    <h3><a href="/en/tech-stack/ai-sim-coding.html">5. AI for Simulation / Coding / Chips</a></h3>
+    <p>
+      The role of AI in simulation (model/condition recommendations, result interpretation), in coding (code generation, testing, refactoring), 
+      and possibilities in chip performance analysis / scheduling strategy exploration. More about "how to use AI in existing workflows" rather than building large models.
+    </p>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Xu Bin Lab · Tech Stack
+</footer>
+
+<button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+  ↑
+</button>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const backToTopButton = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
+

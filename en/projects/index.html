@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Xu Bin Lab</title>
+  <meta name="description" content="Project cases and examples: CFD solver development, HPC optimization, chip deployment, and AI applications." />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/projects/" />
+  <link rel="alternate" hreflang="en" href="https://xubinlab.com/en/projects/" />
+</head>
+<body>
+<header>
+  <nav>
+    <div class="brand">
+      <a href="/" style="color:inherit;text-decoration:none;">XU BIN LAB</a>
+    </div>
+    <ul>
+      <li><a href="/en/#about">About</a></li>
+      <li><a href="/en/tech-stack/">Tech Stack</a></li>
+      <li><a href="/en/projects/">Projects</a></li>
+      <li><a href="/en/notes/">Notes</a></li>
+      <li><a href="/en/tools/">Tools</a></li>
+      <li><a href="/en/misc/">Misc</a></li>
+      <li><a href="/en/#contact">Contact</a></li>
+      <li class="lang-switch"><a href="/">中文</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="projects">
+    <h2>PROJECTS</h2>
+    <p class="muted">
+      Representative project cases will be gradually added here. Each case follows the structure: 
+      "Problem Background → Goals → Technical Solution → Results → Reflection".
+      Currently only structural examples are provided for future content.
+    </p>
+
+    <h3>Example: Aircraft Engine Full-Flowpath Simulation Platform (Hardware-Software Co-Design)</h3>
+    <ul>
+      <li><strong>Problem Background:</strong> Aerodynamic and thermal characteristics evaluation of multi-stage fans, compressors, combustors, and turbines, with high requirements for both accuracy and computation time.</li>
+      <li><strong>Goals:</strong> Obtain engineering-acceptable accuracy results within given computing power and time budgets, and achieve significant and reproducible acceleration on custom chips.</li>
+      <li><strong>My Role:</strong> Solver design and implementation, implicit format and sparse matrix solver optimization, hardware-software co-design discussion and implementation, testing and benchmarking.</li>
+      <li><strong>Technical Highlights:</strong> Equation non-dimensionalization, RANS/LES model selection, Jacobian construction, Krylov solvers and preconditioning, MPI parallelization, chip-side matrix operator deployment.</li>
+      <li><strong>Results (Illustrative):</strong> On several internal test cases, compared with commercial software, main engineering indicators showed deviations within engineering-acceptable ranges; under the same core count, significant acceleration was achieved for some cases (specific data will be placed on dedicated pages).</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Xu Bin Lab · Projects
+</footer>
+
+<button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+  ↑
+</button>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const backToTopButton = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
+

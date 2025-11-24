@@ -5,7 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Xu Bin Lab | CFD · HPC · Chips · AI</title>
   <meta name="description" content="徐斌 Xu Bin：主要从事 CFD 求解器与工程仿真相关工作，涵盖数值方法与求解器实现、HPC 与稀疏矩阵求解、在国产芯片上的部署与性能调优，以及部分 AI 辅助开发与分析实践。" />
+  <meta name="keywords" content="CFD, HPC, 仿真, 数值方法, 稀疏矩阵, 芯片部署, AI, 计算流体力学, 工程仿真, 航空发动机" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://xubinlab.com/" />
+  <meta property="og:title" content="Xu Bin Lab | CFD · HPC · Chips · AI" />
+  <meta property="og:description" content="徐斌 Xu Bin：主要从事 CFD 求解器与工程仿真相关工作，涵盖数值方法与求解器实现、HPC 与稀疏矩阵求解、在国产芯片上的部署与性能调优。" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Xu Bin Lab | CFD · HPC · Chips · AI" />
+  <meta name="twitter:description" content="CFD 求解器与工程仿真工程师，专注于数值方法、HPC 与稀疏矩阵求解、芯片部署。" />
+  
   <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/" />
+  <link rel="alternate" hreflang="en" href="https://xubinlab.com/en/" />
 </head>
 <body>
 <header>
@@ -254,9 +269,32 @@
   © <span id="year"></span> Xu Bin Lab · CFD · HPC · Chips · AI
 </footer>
 
+<!-- Back to Top Button -->
+<button id="back-to-top" class="back-to-top" aria-label="返回顶部" title="返回顶部">
+  ↑
+</button>
+
 <script>
   // 自动更新年份
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // 返回顶部按钮
+  const backToTopButton = document.getElementById('back-to-top');
+  
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 </script>
 </body>
 </html>

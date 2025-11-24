@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 - Page Not Found | Xu Bin Lab</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+<header>
+  <nav>
+    <div class="brand">
+      <a href="/" style="color:inherit;text-decoration:none;">XU BIN LAB</a>
+    </div>
+    <ul>
+      <li><a href="/#about">关于</a></li>
+      <li><a href="/tech-stack/">技术体系</a></li>
+      <li><a href="/projects/">项目</a></li>
+      <li><a href="/notes/">技术笔记</a></li>
+      <li><a href="/tools/">工具</a></li>
+      <li><a href="/misc/">杂谈</a></li>
+      <li><a href="/#contact">联系</a></li>
+      <li class="lang-switch"><a href="/en/">EN</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section style="text-align: center; padding: 4rem 2rem;">
+    <h1 style="font-size: 4rem; margin-bottom: 1rem; color: var(--accent);">404</h1>
+    <h2>Page Not Found</h2>
+    <p class="muted" style="margin: 1.5rem 0;">
+      抱歉，您访问的页面不存在。
+    </p>
+    <p class="muted" style="margin-bottom: 2rem;">
+      Sorry, the page you are looking for does not exist.
+    </p>
+    <div class="hero-actions" style="justify-content: center;">
+      <a class="btn" href="/">返回首页</a>
+      <a class="btn secondary" href="/notes/">查看笔记</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Xu Bin Lab · CFD · HPC · Chips · AI
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
+
