@@ -9,7 +9,7 @@ const path = require('path');
 
 const SITE_ROOT = path.join(__dirname, '..');
 const HTML_FILES = [];
-const INTERNAL_LINKS = new Set();
+const INTERNAL_LINKS = new Map(); // Use Map for proper deduplication
 const MISSING_FILES = [];
 
 /**
@@ -47,10 +47,14 @@ function extractLinks(htmlContent, filePath) {
     if (link.startsWith('/') || link.startsWith('./') || link.startsWith('../')) {
       // Skip anchors and external protocols
       if (!link.startsWith('http://') && !link.startsWith('https://') && !link.startsWith('mailto:')) {
-        INTERNAL_LINKS.add({
-          link: link,
-          source: path.relative(SITE_ROOT, filePath)
-        });
+        const source = path.relative(SITE_ROOT, filePath);
+        const key = `${source} -> ${link}`;
+        if (!INTERNAL_LINKS.has(key)) {
+          INTERNAL_LINKS.set(key, {
+            link: link,
+            source: source
+          });
+        }
       }
     }
   }
@@ -64,8 +68,8 @@ function resolveLinkPath(link, sourceFile) {
   const linkWithoutAnchor = link.split('#')[0];
   
   if (linkWithoutAnchor.startsWith('/')) {
-    // Absolute path from site root
-    return path.join(SITE_ROOT, linkWithoutAnchor);
+    // Absolute path from site root - use resolve to handle leading slash correctly
+    return path.resolve(SITE_ROOT, '.' + linkWithoutAnchor);
   } else {
     // Relative path
     const sourceDir = path.dirname(sourceFile);
@@ -112,7 +116,7 @@ function main() {
   console.log(`Found ${INTERNAL_LINKS.size} internal links\n`);
 
   console.log('✅ Checking links...');
-  for (const linkObj of INTERNAL_LINKS) {
+  for (const linkObj of INTERNAL_LINKS.values()) {
     checkLink(linkObj);
   }
 

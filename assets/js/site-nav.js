@@ -53,8 +53,11 @@
     if (pathname !== '/' && pathname.endsWith('/')) {
       pathname = pathname.slice(0, -1);
     }
-    // Remove /zh prefix if present
+    // Remove /zh or /en prefix if present (for robustness, though /en/ pages are removed)
     if (pathname.startsWith('/zh')) {
+      pathname = pathname.substring(3);
+      if (pathname === '') pathname = '/';
+    } else if (pathname.startsWith('/en')) {
       pathname = pathname.substring(3);
       if (pathname === '') pathname = '/';
     }
