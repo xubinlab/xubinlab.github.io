@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
   <title>404 - Page Not Found | Xu Bin Lab</title>
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="/assets/js/site-nav.js"></script>
@@ -21,8 +22,8 @@
       Sorry, the page you are looking for does not exist.
     </p>
     <div class="hero-actions" style="justify-content: center;">
-      <a class="btn" href="/">返回首页</a>
-      <a class="btn secondary" href="/notes/">查看笔记</a>
+      <a class="btn" id="home-link" href="/">返回首页</a>
+      <a class="btn secondary" id="notes-link" href="/notes/">查看笔记</a>
     </div>
   </section>
 </main>
@@ -33,6 +34,12 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  
+  // Adjust CTA links based on language (Chinese pages are under /zh/)
+  if (window.location.pathname.startsWith('/zh/')) {
+    document.getElementById('home-link').href = '/zh/';
+    document.getElementById('notes-link').href = '/zh/notes/';
+  }
 </script>
 </body>
 </html>

@@ -11,6 +11,7 @@ const SITE_ROOT = path.join(__dirname, '..');
 const HTML_FILES = [];
 const INTERNAL_LINKS = new Map(); // Use Map for proper deduplication
 const MISSING_FILES = [];
+const HEAD_VIOLATIONS = []; // Store head tag violations
 
 /**
  * Recursively find all HTML files
@@ -132,6 +133,50 @@ function extractNavLinks() {
 }
 
 /**
+ * Check head tags for SEO compliance
+ */
+function checkHeadTags(filePath, content) {
+  const relPath = path.relative(SITE_ROOT, filePath);
+  
+  // Skip 404.html and en/index.html (they should have noindex)
+  if (relPath === '404.html' || relPath === 'en/index.html') {
+    // Verify they have noindex
+    if (!content.includes('noindex')) {
+      HEAD_VIOLATIONS.push({
+        file: relPath,
+        issue: 'Missing noindex meta tag (required for 404/redirect pages)'
+      });
+    }
+    return;
+  }
+  
+  // All other pages should have canonical
+  if (!content.includes('rel="canonical"')) {
+    HEAD_VIOLATIONS.push({
+      file: relPath,
+      issue: 'Missing canonical link tag'
+    });
+  }
+  
+  // Check if this is a list page (index.html in notes, projects, tools, misc, tech-stack)
+  const normalizedPath = relPath.replace(/\\/g, '/');
+  const isListPage = /^(zh\/)?(notes|projects|tools|misc|tech-stack)\/index\.html$/.test(normalizedPath);
+  
+  if (isListPage) {
+    // List pages should have both en and zh hreflang pairs
+    const hasEnHreflang = /hreflang=["']en["']/.test(content);
+    const hasZhHreflang = /hreflang=["']zh-cn["']/.test(content);
+    
+    if (!hasEnHreflang || !hasZhHreflang) {
+      HEAD_VIOLATIONS.push({
+        file: relPath,
+        issue: `Missing hreflang pairs for list page (has en: ${hasEnHreflang}, has zh: ${hasZhHreflang})`
+      });
+    }
+  }
+}
+
+/**
  * Main execution
  */
 function main() {
@@ -143,6 +188,7 @@ function main() {
   for (const file of HTML_FILES) {
     const content = fs.readFileSync(file, 'utf-8');
     extractLinks(content, file);
+    checkHeadTags(file, content);
   }
   console.log(`Found ${INTERNAL_LINKS.size} internal links from HTML\n`);
 
@@ -155,16 +201,32 @@ function main() {
     checkLink(linkObj);
   }
 
+  let hasErrors = false;
+
   if (MISSING_FILES.length > 0) {
+    hasErrors = true;
     console.error('❌ Found broken links:\n');
     for (const missing of MISSING_FILES) {
       console.error(`  ${missing.link}`);
       console.error(`    Source: ${missing.source}`);
       console.error(`    Resolved: ${missing.resolved}\n`);
     }
+  }
+
+  if (HEAD_VIOLATIONS.length > 0) {
+    hasErrors = true;
+    console.error('❌ Found head tag violations:\n');
+    for (const violation of HEAD_VIOLATIONS) {
+      console.error(`  ${violation.file}`);
+      console.error(`    Issue: ${violation.issue}\n`);
+    }
+  }
+
+  if (hasErrors) {
     process.exit(1);
   } else {
     console.log('✅ All links are valid!');
+    console.log('✅ All head tags are compliant!');
     process.exit(0);
   }
 }
