@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>技术体系 | Xu Bin Lab</title>
+  <meta name="description" content="我的技术能力分解：物理与建模、数值方法与HPC、软件工程、芯片集成和AI应用。" />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="https://xubinlab.com/zh/tech-stack/" />
+  <link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/tech-stack/" />
+  <link rel="alternate" hreflang="en" href="https://xubinlab.com/tech-stack/" />
+  <script src="/assets/js/site-nav.js"></script>
+</head>
+<body>
+<header id="site-nav"></header>
+
+<main>
+  <section id="tech-stack">
+    <h2>技术体系概览</h2>
+    <p class="muted">
+      这个页面是对"我实际掌握什么"的分解。每个部分会有更详细的主题页面和笔记链接，
+      方便其他人快速判断我们可以在哪些层面进行有意义的对话。
+    </p>
+
+    <h3><a href="/zh/tech-stack/physics-modeling.html">1. 物理与建模（Physics &amp; Simulation Modeling）</a></h3>
+    <p>
+      从数学基础到控制方程，从湍流/多相/燃烧模型到具体工程场景（风扇、压气机、燃烧室、涡轮等）。
+      更多关注「物理理解 + 建模权衡」而非特定求解器的使用说明。
+    </p>
+
+    <h3><a href="/zh/tech-stack/numerics-hpc.html">2. 数值方法、求解器与 HPC（Numerics, Solvers &amp; HPC）</a></h3>
+    <p>
+      离散化方法（FVM/FEM/DG）、时间推进、线性/非线性求解器、预条件、稳定性；
+      再到并行分区、负载均衡、缓存/带宽行为——主要关注「算法如何映射到机器」。
+    </p>
+
+    <h3><a href="/zh/tech-stack/software-workflow.html">3. 软件工程与计算流程（Software Engineering &amp; Workflow）</a></h3>
+    <p>
+      包括：软件调研与理解、自研代码的架构设计、编码规范与测试、
+      算例库与 CI/CD，以及完整的「预处理 → 求解 → 后处理 → HPC 作业」流程如何设计与演进。
+    </p>
+
+    <h3><a href="/zh/tech-stack/chips-system.html">4. 芯片与系统集成（Chips &amp; System Integration）</a></h3>
+    <p>
+      在不泄露保密信息的前提下，讨论如何从算子/数据布局角度理解自研芯片架构，
+      以及将 CFD / CAE 求解器与自研芯片和系统平台集成的过程。
+    </p>
+
+    <h3><a href="/zh/tech-stack/ai-sim-coding.html">5. AI 在仿真/编码/芯片中的应用（AI for Simulation / Coding / Chips）</a></h3>
+    <p>
+      AI 在仿真中的应用（模型/条件推荐、结果判读），在编码中的应用（代码生成、测试、重构），
+      以及在芯片性能分析/调度策略探索中的可能性。更多关注「如何在现有工作流中使用 AI」而非构建大模型。
+    </p>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Xu Bin Lab · 技术体系
+</footer>
+
+<button id="back-to-top" class="back-to-top" aria-label="返回顶部" title="返回顶部">
+  ↑
+</button>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const backToTopButton = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
+

@@ -6,22 +6,6 @@
     "category": "数值方法与求解器",
     "summary": "分析隐式CFD求解器的收敛行为，涵盖CFL条件、线性求解器耦合以及工程应用中的实用收敛准则。",
     "slug": "implicit-solver-convergence"
-  },
-  {
-    "id": "preconditioning-sparse-systems",
-    "title": "CFD稀疏线性系统的预条件策略",
-    "date": "2024-11",
-    "category": "HPC / 稀疏求解器",
-    "summary": "讨论隐式CFD求解器中大型稀疏系统的预条件技术，重点关注AMG和领域特定策略。",
-    "slug": "preconditioning-sparse-systems"
-  },
-  {
-    "id": "parallel-scaling-analysis",
-    "title": "CFD应用中的并行扩展分析实践",
-    "date": "2024-10",
-    "category": "HPC / 性能优化",
-    "summary": "分析和改进大规模CFD仿真中并行扩展效率的实用指南。",
-    "slug": "parallel-scaling-analysis"
   }
 ]
 
