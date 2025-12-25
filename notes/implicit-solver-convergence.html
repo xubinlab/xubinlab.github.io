@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Understanding Convergence Behavior in Implicit CFD Solvers | Xu Bin Lab</title>
+  <meta name="description" content="Analysis of convergence behavior in implicit CFD solvers, covering CFL conditions, linear solver coupling, and practical convergence criteria for engineering applications." />
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="alternate" hreflang="zh-cn" href="/zh/notes/implicit-solver-convergence.html" />
+  <link rel="alternate" hreflang="en" href="/notes/implicit-solver-convergence.html" />
+</head>
+<body>
+<header>
+  <nav>
+    <div class="brand">
+      <a href="/" style="color:inherit;text-decoration:none;">XU BIN LAB</a>
+    </div>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/tech-stack/">Tech Stack</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/notes/">Notes</a></li>
+      <li><a href="/tools/">Tools</a></li>
+      <li><a href="/misc/">Misc</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li class="lang-switch"><a href="/zh/notes/">中文</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <article class="note-content">
+    <h1>Understanding Convergence Behavior in Implicit CFD Solvers</h1>
+    <div class="note-meta">
+      <span class="date">December 2024</span>
+      <span class="tags">Numerical Methods · Implicit Solvers · Stability · CFL Condition</span>
+    </div>
+
+    <h2>Problem Statement</h2>
+    <p>Implicit CFD solvers are widely used for steady-state simulations due to their unconditional stability, but their convergence behavior can be counter-intuitive. Unlike explicit methods where the CFL condition provides clear timestep limits, implicit solvers couple timestep selection with linear solver performance. This note examines when and why implicit solvers struggle to converge, and practical strategies for diagnosis and improvement.</p>
+
+    <h2>Analysis: The CFL Condition in Implicit Methods</h2>
+    <p>The key insight is that implicit methods don't eliminate the CFL condition—they transform it. For a simple 1D advection equation, the explicit method requires Δt < Δx/u for stability. The implicit method allows Δt > Δx/u, but convergence becomes increasingly difficult as timestep increases.</p>
+
+    <p>This occurs because:</p>
+    <ul>
+      <li>The linear system becomes increasingly ill-conditioned as Δt grows</li>
+      <li>Small timesteps provide better conditioning but require more iterations to reach steady state</li>
+      <li>Large timesteps approach the steady-state solution faster per iteration but each iteration is more expensive</li>
+    </ul>
+
+    <p>In practice, the optimal timestep for implicit solvers is often 10-100x larger than the explicit CFL limit, but not arbitrarily large. The "sweet spot" balances linear solver conditioning with overall computational cost.</p>
+
+    <h2>Linear Solver Coupling Effects</h2>
+    <p>Most implicit CFD solvers use iterative linear solvers (GMRES, BiCGStab) with preconditioners. Convergence behavior depends on:</p>
+
+    <ul>
+      <li><strong>Preconditioner effectiveness:</strong> Poor preconditioning amplifies ill-conditioning from large timesteps</li>
+      <li><strong>Nonlinear coupling:</strong> In turbulent flows, turbulence model updates can destabilize the linear system</li>
+      <li><strong>Boundary condition implementation:</strong> Inflow/outflow boundaries affect global system conditioning</li>
+    </ul>
+
+    <p>A common issue is "stalling" where residual reduction slows dramatically. This often indicates the linear solver tolerance is too tight relative to the timestep size, or the preconditioner is losing effectiveness as the solution evolves.</p>
+
+    <h2>Practical Convergence Criteria</h2>
+    <p>Engineering convergence should be physics-based, not just numerical:</p>
+
+    <ul>
+      <li><strong>Force coefficients:</strong> Lift/drag within 0.1% variation over multiple iterations</li>
+      <li><strong>Mass flow conservation:</strong> < 0.01% imbalance for internal flows</li>
+      <li><strong>Integral quantities:</strong> Total pressure losses, efficiency metrics stabilized</li>
+    </ul>
+
+    <p>Don't rely solely on residual reduction—residuals can plateau while engineering quantities still change significantly.</p>
+
+    <h2>Common Pitfalls and Solutions</h2>
+
+    <h3>Pitfall 1: Overly aggressive timestepping</h3>
+    <p>Solution: Start with conservative timesteps (CFL ≈ 100-500) and gradually increase. Monitor linear solver iteration count as a diagnostic.</p>
+
+    <h3>Pitfall 2: Ignoring linear solver tolerance</h3>
+    <p>Solution: Use timestep-adaptive tolerance. For large timesteps, looser tolerance (1e-3) may suffice; for smaller timesteps, tighter tolerance (1e-8) needed.</p>
+
+    <h3>Pitfall 3: Turbulence model instability</h3>
+    <p>Solution: Limit turbulence model updates to every few iterations, or use implicit turbulence model coupling with smaller timesteps.</p>
+
+    <h2>Conclusion</h2>
+    <p>Implicit CFD solver convergence is a balancing act between timestep size, linear solver efficiency, and engineering accuracy requirements. The key insight is that "implicit = stable" is an oversimplification—implicit methods transform stability constraints into conditioning and solver efficiency challenges. Successful implicit solving requires understanding both the numerical method and the specific physics being solved.</p>
+
+    <p>Practical recommendation: Always monitor both residuals and engineering quantities, and use convergence as a physics validation rather than just a numerical completion criterion.</p>
+
+    <div class="note-footer">
+      <p><em>This analysis assumes compressible Navier-Stokes equations with standard turbulence models. Results may vary for specialized physics (combustion, multiphase) or non-standard boundary conditions.</em></p>
+      <p><a href="/notes/">← Back to Notes</a></p>
+    </div>
+  </article>
+</main>
+
+<footer>
+  © <span id="year"></span> Xu Bin Lab · Technical Notes
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
