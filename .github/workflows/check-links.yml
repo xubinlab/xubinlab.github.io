@@ -1,0 +1,29 @@
+name: Check Internal Links
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Check internal links
+        run: |
+          node scripts/check-links.js
+      
+      - name: Check critical assets
+        run: |
+          if [ ! -f "assets/resume-xu-bin.pdf" ]; then
+            echo "⚠️  Warning: assets/resume-xu-bin.pdf not found (this is OK if CV link points elsewhere)"
+          fi
+
