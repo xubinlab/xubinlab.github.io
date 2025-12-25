@@ -6,12 +6,15 @@
   <title>Xu Bin Lab | CFD · HPC · Chips · AI</title>
   <meta name="description" content="Xu Bin: CFD solver and engineering simulation engineer. Specialized in numerical methods, HPC & sparse matrix solvers, and deployment on custom chips with AI-assisted development." />
   <meta name="keywords" content="CFD, HPC, simulation, numerical methods, sparse matrix, chip deployment, AI, computational fluid dynamics, engineering simulation" />
+  <link rel="canonical" href="https://xubinlab.com/" />
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://xubinlab.com/" />
   <meta property="og:title" content="Xu Bin Lab | CFD · HPC · Chips · AI" />
   <meta property="og:description" content="CFD solver and engineering simulation engineer. Specialized in numerical methods, HPC & sparse matrix solvers, and deployment on custom chips." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="zh_CN" />
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
@@ -21,25 +24,11 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/" />
   <link rel="alternate" hreflang="en" href="https://xubinlab.com/" />
+  <script src="/assets/js/site-nav.js"></script>
+  <script src="/assets/js/homepage-data.js"></script>
 </head>
 <body>
-<header>
-  <nav>
-    <div class="brand">
-      <a href="/" style="color:inherit;text-decoration:none;">XU BIN LAB</a>
-    </div>
-    <ul>
-      <li><a href="/#about">About</a></li>
-      <li><a href="/tech-stack/">Tech Stack</a></li>
-      <li><a href="/projects/">Projects</a></li>
-      <li><a href="/notes/">Notes</a></li>
-      <li><a href="/tools/">Tools</a></li>
-      <li><a href="/misc/">Misc</a></li>
-      <li><a href="/#contact">Contact</a></li>
-      <li class="lang-switch"><a href="/zh/">中文</a></li>
-    </ul>
-  </nav>
-</header>
+<header id="site-nav"></header>
 
 <main>
   <!-- Hero -->
@@ -169,7 +158,8 @@
       Representative project cases showcasing CFD solver development, HPC optimization, and custom chip deployment.
       Each project follows a structured approach: Background → Role & Goals → Technical Solution → Results & Metrics → Reflection.
     </p>
-    <p><a href="/projects/">View all projects →</a></p>
+    <div id="homepage-projects"></div>
+    <p style="margin-top: 1.5rem;"><a href="/projects/">View all projects →</a></p>
   </section>
 
   <!-- Notes -->
@@ -179,7 +169,8 @@
       Technical notes on CFD / simulation / HPC / chips / AI. Each article follows a clear structure:
       Problem → Analysis → Conclusion, with explicit assumptions and boundaries stated.
     </p>
-    <p><a href="/notes/">Read technical notes →</a></p>
+    <div id="homepage-notes"></div>
+    <p style="margin-top: 1.5rem;"><a href="/notes/">Read all technical notes →</a></p>
   </section>
 
   <!-- Tools -->

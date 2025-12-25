@@ -1,167 +1,89 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>软件工程与计算流程 · Software Engineering &amp; Workflow | Xu Bin Lab</title>
+  <title>Software Engineering &amp; Workflow | Xu Bin Lab</title>
+  <meta name="description" content="Software architecture design, coding standards, testing, CI/CD, and complete simulation workflows from preprocessing to postprocessing." />
   <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="https://xubinlab.com/tech-stack/software-workflow.html" />
+  <link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/tech-stack/software-workflow.html" />
+  <link rel="alternate" hreflang="en" href="https://xubinlab.com/tech-stack/software-workflow.html" />
+  <script src="/assets/js/site-nav.js"></script>
 </head>
 <body>
-<header>
-  <nav>
-    <div class="brand">
-      <a href="/" style="color:inherit;text-decoration:none;">XU BIN LAB</a>
-    </div>
-    <ul>
-      <li><a href="/#about">关于</a></li>
-      <li><a href="/tech-stack/">技术体系</a></li>
-      <li><a href="/projects/">项目</a></li>
-      <li><a href="/notes/">技术笔记</a></li>
-      <li><a href="/tools/">工具</a></li>
-      <li><a href="/misc/">杂谈</a></li>
-      <li><a href="/#contact">联系</a></li>
-      <li class="lang-switch"><a href="/en/">EN</a></li>
-    </ul>
-  </nav>
-</header>
+<header id="site-nav"></header>
 
 <main>
   <section id="software-workflow">
-    <h2>软件工程与计算流程 · Software Engineering &amp; Workflow</h2>
+    <h2>Software Engineering &amp; Workflow</h2>
     <p class="muted">
-      仿真软件不是「把方程写进代码」这么简单。
-      这一部分更多讲：我是怎么理解现有软件、怎么设计自研代码的架构，以及一条完整的计算流程是如何搭起来的。
+      Simulation software is not simply "writing equations into code."
+      This section covers: how I understand existing software, how I design custom code architecture, and how complete computational workflows are built.
     </p>
 
-    <h3>1. 软件调研与认识（Software Survey &amp; Understanding）</h3>
+    <h3>1. Software Survey &amp; Understanding</h3>
     <p>
-      在写任何一行自研代码之前，先搞清楚：<strong>别人已经做到了哪一步</strong>，
-      哪些是成熟的工程能力，哪些是空白，哪些是「需要但现有工具做得不够好」。
+      Before writing any custom code, understand: <strong>what others have already achieved</strong>,
+      what are mature engineering capabilities, what are gaps, what is "needed but existing tools don't do well enough."
     </p>
     <ul>
       <li>
-        <strong>1.1 商业 CAE / CFD 软件认知</strong>  
-        Abaqus / Ansys / LS-DYNA / Nastran / Radioss / HyperMesh 等，分别擅长：
-        非线性结构、多场耦合、冲击碰撞、优化设计、前处理等。
-        <br />
-        相关笔记：
-        <a href="/notes/2025-fea-struct-solvers.html">
-          结构有限元商业软件的功能定位与适用场景（个人笔记）
-        </a>
+        <strong>1.1 Commercial CAE / CFD Software</strong>
+        Abaqus / Ansys / LS-DYNA / Nastran / Radioss / HyperMesh, each specialized in:
+        nonlinear structures, multiphysics coupling, impact/collision, optimization, preprocessing, etc.
       </li>
       <li>
-        <strong>1.2 开源软件生态</strong>  
-        OpenFOAM / SU2 / Code_Saturne / CalculiX / Code_Aster 等，
-        它们分别适合用来当「工程工具」、「研究平台」还是「架构参考」。
-        <br />
-        相关笔记：
-        <a href="/notes/2025-open-source-sim-survey.html">
-          开源仿真 / CAE 软件调研（第一版）
-        </a>
+        <strong>1.2 Open Source Ecosystem</strong>
+        OpenFOAM / SU2 / Code_Saturne / CalculiX / Code_Aster, suitable as "engineering tools," "research platforms," or "architecture references."
       </li>
       <li>
-        <strong>1.3 自己要做什么 &amp; 不做什么</strong>  
-        在仿真软件这个巨大的空间里，
-        划清我自己的关注边界：重点在 CFD 求解器和发动机相关应用，
-        不试图做一个「什么都做一点」但哪一块都很浅的平台。
+        <strong>1.3 Scope Definition</strong>
+        Defining boundaries: focus on CFD solvers and engine-related applications, not trying to cover all CAE domains.
       </li>
     </ul>
 
-    <h3>2. 软件工程：从代码到架构（Software Engineering）</h3>
-    <p class="muted">
-      这一块更多是「写给工程师看的」，不是卖弄模式设计，
-      而是讲如何用有限的精力，把 CFD 这种复杂系统拆成可维护的代码。
-    </p>
+    <h3>2. Architecture Design</h3>
     <ul>
-      <li>
-        <strong>2.1 代码基础（Code Basics）</strong>
-        <ul>
-          <li>现代 C++ 约定：命名、RAII、智能指针、error handling、日志与断言。</li>
-          <li>目录组织：<code>include/</code>、<code>src/</code>、<code>tests/</code>、<code>tools/</code> 等。</li>
-          <li>配置管理：CMake、vcpkg、编译选项、编译数据库（clangd / clang-tidy）。</li>
-        </ul>
-      </li>
-      <li>
-        <strong>2.2 架构设计（Architecture）</strong>
-        <ul>
-          <li>网格 / 物理模型 / 求解器 / IO 的解耦与依赖方向。</li>
-          <li>如何设计「插件式」的模型系统：湍流模型、多相模型、边界条件可插拔。</li>
-          <li>面向算例的配置系统：输入文件结构、命令行覆盖、默认参数策略。</li>
-        </ul>
-      </li>
-      <li>
-        <strong>2.3 质量保障（Quality &amp; Reliability）</strong>
-        <ul>
-          <li>单元测试 / 回归测试：哪些函数值得测，哪些算例要固定下来。</li>
-          <li>算例库管理：把工程算例变成「资产」，而不是一次性脚本。</li>
-          <li>编码规范、代码评审、CI/CD：尤其是多人成本地长期维护的情况下。</li>
-        </ul>
-      </li>
-      <li>
-        <strong>2.4 与现有软件的协同（Interop）</strong>
-        <ul>
-          <li>网格格式适配：Fluent mesh、CGNS、SU2、VTK 等常见格式的读写。</li>
-          <li>后处理接口：VTK / Tecplot / ParaView 等开源/商用后处理工具。</li>
-          <li>在现有工程流程中「插进去」，而不是要求用户全部推倒重来。</li>
-        </ul>
-      </li>
+      <li><strong>2.1 Modular Design</strong> Separating physics, numerics, and I/O for maintainability and extensibility.</li>
+      <li><strong>2.2 Data Structures</strong> Efficient data structures for meshes, sparse matrices, solution fields.</li>
+      <li><strong>2.3 Abstraction Layers</strong> Abstract interfaces for different discretization methods and solvers.</li>
     </ul>
 
-    <h3>3. 计算流程（Simulation Workflow）</h3>
-    <p>
-      计算流程这块，我习惯按「代码基础 → 高级流程 → HPC」三层来看，
-      而不是一上来就谈集群和超算。
-    </p>
+    <h3>3. Coding Standards &amp; Testing</h3>
     <ul>
-      <li>
-        <strong>3.1 基础流程：单算例跑通</strong>
-        <ul>
-          <li>
-            从「网格 + 物理参数 + 控制参数（时间步长、迭代上限等）」到一次完整模拟；
-            中间需要哪些最基本的检查（残差、守恒量、简单场变量分布）。
-          </li>
-          <li>日志设计：既能被人类看懂，又方便后续脚本/工具解析。</li>
-        </ul>
-      </li>
-      <li>
-        <strong>3.2 高级流程：复杂工况与批量计算</strong>
-        <ul>
-          <li>多载荷步、多工况：转速扫线、攻角扫线、温度工况组合等。</li>
-          <li>restart / 热启动：长期计算如何从中间状态接着算。</li>
-          <li>参数扫描与自动化脚本：一套算例多参数跑，如何组织目录和结果。</li>
-        </ul>
-      </li>
-      <li>
-        <strong>3.3 HPC 流程：从单机到集群</strong>
-        <ul>
-          <li>作业脚本：Slurm 等队列系统下的 <code>sbatch</code> / <code>srun</code> 脚本模板。</li>
-          <li>并行划分策略：按区域 / 按拓扑 / 按负载的不同划分方式。</li>
-          <li>性能分析：如何用简单的 profiling 手段看出瓶颈在哪一层（算子、通信、I/O）。</li>
-        </ul>
-      </li>
+      <li><strong>3.1 Code Style</strong> Consistent naming, formatting, documentation standards.</li>
+      <li><strong>3.2 Testing</strong> Unit tests, integration tests, regression tests for numerical methods.</li>
+      <li><strong>3.3 Code Review</strong> Peer review processes, automated checks.</li>
     </ul>
 
-    <h3>4. 我的实践（My Practice）</h3>
-    <p>
-      目前在做的几条线，大致可以归结为：
-    </p>
+    <h3>4. Complete Workflow</h3>
     <ul>
-      <li>自研可压缩 CFD 求解器的架构演化（从单文件原型到分层结构）。</li>
-      <li>在自研芯片上的部署：如何把矩阵求解 / 关键算子抽象出来，挂到硬件加速上。</li>
-      <li>围绕这些代码搭配测试体系、算例库、以及简单的 CI/CD 流程。</li>
+      <li><strong>4.1 Preprocessing</strong> Mesh generation, boundary condition setup, case configuration.</li>
+      <li><strong>4.2 Solving</strong> Solver execution, monitoring, checkpointing.</li>
+      <li><strong>4.3 Postprocessing</strong> Result visualization, data analysis, reporting.</li>
+      <li><strong>4.4 HPC Integration</strong> Job scheduling, resource management, workflow automation.</li>
+    </ul>
+
+    <h3>5. My Practice</h3>
+    <p>Currently working on:</p>
+    <ul>
+      <li>Designing modular CFD solver architectures for maintainability.</li>
+      <li>Building complete workflows from preprocessing to postprocessing.</li>
+      <li>Integrating custom solvers with HPC job systems.</li>
     </ul>
     <p class="muted">
-      后续会在 <a href="/projects/">项目案例</a> 和 <a href="/notes/">技术笔记</a> 中，
-      逐步展开具体的架构设计、调试经验和踩坑记录。
+      Architecture decisions and workflow details will be documented in <a href="/projects/">projects</a> and <a href="/notes/">technical notes</a>.
     </p>
   </section>
 </main>
 
 <footer>
-  © <span id="year"></span> Xu Bin Lab · Software &amp; Workflow
+  © <span id="year"></span> Xu Bin Lab · Software Engineering
 </footer>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
+

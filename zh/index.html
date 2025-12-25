@@ -6,12 +6,15 @@
   <title>Xu Bin Lab | CFD · HPC · Chips · AI</title>
   <meta name="description" content="徐斌 Xu Bin：主要从事 CFD 求解器与工程仿真相关工作，涵盖数值方法与求解器实现、HPC 与稀疏矩阵求解、在国产芯片上的部署与性能调优，以及部分 AI 辅助开发与分析实践。" />
   <meta name="keywords" content="CFD, HPC, 仿真, 数值方法, 稀疏矩阵, 芯片部署, AI, 计算流体力学, 工程仿真, 航空发动机" />
+  <link rel="canonical" href="https://xubinlab.com/zh/" />
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://xubinlab.com/" />
+  <meta property="og:url" content="https://xubinlab.com/zh/" />
   <meta property="og:title" content="Xu Bin Lab | CFD · HPC · Chips · AI" />
   <meta property="og:description" content="徐斌 Xu Bin：主要从事 CFD 求解器与工程仿真相关工作，涵盖数值方法与求解器实现、HPC 与稀疏矩阵求解、在国产芯片上的部署与性能调优。" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale:alternate" content="en_US" />
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
@@ -21,23 +24,11 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/" />
   <link rel="alternate" hreflang="en" href="https://xubinlab.com/" />
+  <script src="/assets/js/site-nav.js"></script>
+  <script src="/assets/js/homepage-data.js"></script>
 </head>
 <body>
-<header>
-  <nav>
-    <div class="brand">XU BIN LAB</div>
-    <ul>
-      <li><a href="/zh/#about">关于</a></li>
-      <li><a href="/zh/tech-stack/">技术体系</a></li>
-      <li><a href="/zh/projects/">项目</a></li>
-      <li><a href="/zh/notes/">技术笔记</a></li>
-      <li><a href="/zh/tools/">工具</a></li>
-      <li><a href="/zh/misc/">杂谈</a></li>
-      <li><a href="/zh/#contact">联系</a></li>
-      <li class="lang-switch"><a href="/">EN</a></li>
-    </ul>
-  </nav>
-</header>
+<header id="site-nav"></header>
 
 <main>
   <!-- Hero -->
@@ -157,102 +148,21 @@
   <section id="projects">
     <h2>PROJECTS · 项目与案例</h2>
     <p class="muted">
-      这里会逐步补充代表性的项目案例，每个案例按照“问题背景 → 目标 → 技术方案 → 结果 → 反思”展开。
-      目前只给出结构示例，方便后续填充。
+      这里整理一些有代表性的项目案例，每个案例尽量说明：问题背景、目标、技术方案、结果和反思。
     </p>
-
-    <h3>示例：航空发动机全流道仿真平台（Soft–Hardware Co-Design）</h3>
-    <ul>
-      <li><strong>问题背景：</strong> 多级风扇、压气机、燃烧室、涡轮的全流道气动与热力特性评估，对精度和计算时间都有较高要求。</li>
-      <li><strong>目标：</strong> 在给定算力和时间预算下，获得工程可接受精度的结果，并在国产芯片上实现可观且可复现的加速效果。</li>
-      <li><strong>我的角色：</strong> 求解器设计与实现、隐式格式与稀疏矩阵求解优化、软硬件协同方案讨论与实现、测试与对标。</li>
-      <li><strong>技术要点：</strong> 方程无量纲、RANS/LES 模型选择、Jacobian 构造、Krylov 求解器与预条件、MPI 并行、芯片侧矩阵算子部署。</li>
-      <li><strong>结果（示意）：</strong> 在若干内部算例上，与商用软件对比后主要工程指标偏差处于工程可接受范围；在同等核数下，对部分算例获得了明显加速（具体数据将放在独立页面中）。</li>
-    </ul>
+    <div id="homepage-projects"></div>
+    <p style="margin-top: 1.5rem;"><a href="/zh/projects/">查看所有项目 →</a></p>
   </section>
 
   <!-- Notes -->
   <section id="notes">
     <h2>NOTES · 技术笔记</h2>
     <p class="muted">
-      这里会持续更新 CFD / 仿真 / HPC / 芯片 / AI 相关的技术笔记。
-      下面是一篇示例笔记，展示后续文章的大致风格：以“问题—分析—结论”为主线，尽量说明前提和边界。
+      这里主要记录 CFD / 仿真 / HPC / 芯片 / AI 等相关的技术内容。
+      分类只是为了方便查找，不代表严格的学科边界。
     </p>
-
-    <article class="note">
-      <h3>示例：结构有限元商业软件的功能定位与适用场景（个人笔记）</h3>
-      <p class="muted">
-        这是一篇基于公开资料和个人理解的粗略梳理，主要目的是帮自己理清常见结构有限元/冲击软件的大致定位。
-        不是官方评测，也不代表任何厂商立场，仅用于交流和自查：遇到某类问题时，我大概会想到哪几款软件，以及它们各自的强项和明显短板。
-      </p>
-
-      <h4>1. Abaqus：非线性与通用结构分析</h4>
-      <ul>
-        <li><strong>关键词：</strong> 非线性、通用有限元。</li>
-        <li><strong>典型强项：</strong> 在几何/材料/接触等非线性问题上，求解器鲁棒性和功能的“覆盖面”都比较好，适合做复杂结构的静力/动力和多步载荷分析；Python 接口可扩展性强。</li>
-        <li><strong>常见印象：</strong> 在很多工程师的经验中，做结构非线性时，Abaqus 的参数配置相对“省心”，收敛性体验好于一些通用软件。</li>
-        <li><strong>局限与成本：</strong> 软件体系很大，上手曲线相对陡；在冲击/爆炸等极端动力问题上虽然能做，但业界通常还有更专门的选择。</li>
-        <li><strong>何时会考虑用：</strong> 复杂非线性结构问题、需要系统级分析且希望在同一平台内完成大部分流程时。</li>
-      </ul>
-
-      <h4>2. Ansys：多物理场与平台整合</h4>
-      <ul>
-        <li><strong>关键词：</strong> 多物理场、多模块。</li>
-        <li><strong>典型强项：</strong> 通过收购与整合，形成了结构、流体、电磁等多个模块，适合做多物理场耦合和跨学科工程问题。</li>
-        <li><strong>特征：</strong> APDL 语言可编程性强，被不少工程师当作“工程脚本环境”；在流体、电磁、瞬态动力学等方向都有成熟应用。</li>
-        <li><strong>相对弱项：</strong> 某些细分领域（如岩土、部分高度非线性分析）不一定是首选；热分析、岩土等需要结合具体版本和模块来判断。</li>
-        <li><strong>何时会考虑用：</strong> 项目天然是多物理场耦合，或者团队已经有一整套 Ansys 生态时（前处理、后处理、接口都比较顺）。</li>
-      </ul>
-
-      <h4>3. LS-DYNA：冲击与碰撞</h4>
-      <ul>
-        <li><strong>关键词：</strong> 显式动力学、冲击、碰撞、成形。</li>
-        <li><strong>典型强项：</strong> 在高速碰撞、爆炸、金属成形等强非线性动力问题中是行业标杆之一，材料模型与单元类型非常丰富。</li>
-        <li><strong>特点：</strong> 历史很长，早期用于国防相关问题，有较多工程验证；自带流体求解器，可做一定程度的流固耦合。</li>
-        <li><strong>局限：</strong> 极端问题下模型配置复杂，对用户经验要求高；前后处理若不用配套工具（如 HyperMesh/HyperView），体验会打折。</li>
-        <li><strong>何时会考虑用：</strong> 汽车碰撞、结构冲击、安全相关场景，或者需要显式动力求解器的场合。</li>
-      </ul>
-
-      <h4>4. MSC.Dytran：高度非线性流固耦合</h4>
-      <ul>
-        <li><strong>关键词：</strong> 流固耦合、高度非线性。</li>
-        <li><strong>典型定位：</strong> 在 LS-DYNA 框架基础上引入 PISCES 的流体/流固功能，专注高度非线性流固耦合问题。</li>
-        <li><strong>优势：</strong> 对某些流固耦合工况有比较成熟的应用经验。</li>
-        <li><strong>局限：</strong> 材料模型数量相对有限，对岩土等材料处理较弱；缺少二维/轴对称等会增加计算成本；与最新版本的 LS-DYNA 相比，在接触算法等方面略显保守。</li>
-      </ul>
-
-      <h4>5. ADINA：非线性求解策略</h4>
-      <ul>
-        <li><strong>关键词：</strong> 特殊解法、非线性收敛。</li>
-        <li><strong>典型强项：</strong> 在复杂非线性问题（接触、塑性、破坏等）的求解策略上有特点，如多种非线性控制与自动步长调整，目标是提高收敛性和稳定性。</li>
-        <li><strong>工程意义：</strong> 对于难收敛的结构非线性问题，提供了一些有别于主流软件的解法选择。</li>
-      </ul>
-
-      <h4>6. Nastran：线性结构与航天背景</h4>
-      <ul>
-        <li><strong>关键词：</strong> 线性结构分析、航天工程。</li>
-        <li><strong>典型强项：</strong> 历史悠久、在航天等领域广泛使用，在线性有限元和动力学分析方面有大量验证，求解效率口碑较好。</li>
-        <li><strong>特点：</strong> bulk 数据格式灵活但对初学者不算友好；因用户群体大，工程经验与资料非常丰富。</li>
-        <li><strong>何时会考虑用：</strong> 线性/轻非线性结构分析，尤其是在已有 Nastran 工作流的行业（航天、机械等）。</li>
-      </ul>
-
-      <h4>7. 其他软件的简要印象</h4>
-      <ul>
-        <li><strong>ALGOR：</strong> 强调易学易用、界面友好，适合作为中等规模工程的快速分析工具。</li>
-        <li><strong>COSMOS：</strong> 以多物理场与求解速度见长，适合快速迭代和集成到 CAD/PLM 环境中。</li>
-        <li><strong>MARC：</strong> 非线性能⼒很强，求解速度在某些工况下优于同行，但输入文件和操作界面对用户要求较高，更适合有经验的用户。</li>
-        <li><strong>Radioss：</strong> 在显式动力和汽车碰撞领域有较多客户，配合 Altair 自家的前后处理，整体流程体验较好。</li>
-        <li><strong>OptiStruct：</strong> 在结构优化、拓扑优化、格结构设计方向非常突出；作为通用隐式求解器也可用，但市场定位更偏“优化专家”。</li>
-        <li><strong>HyperMesh：</strong> 以前处理和网格划分著称，对网格质量和底层控制很细，是很多汽车/结构团队的标准配置。</li>
-      </ul>
-
-      <h4>8. 小结：怎么用这些“标签”而不过度简化</h4>
-      <ul>
-        <li>不同软件都有自己的历史包袱和强项，“A 更好”往往只在特定问题类别和使用者经验之下成立。</li>
-        <li>真正选型时，通常要看：问题类型（线性/非线性/冲击/流固）、现有工作流（团队已经在用什么）、以及后续是否需要扩展到多物理场。</li>
-        <li>这篇只是个人学习时的“标签表”，方便自己在脑子里快速归类：遇到一个工程需求时，大概应该想到哪些候选工具，以及它们可能的坑。</li>
-      </ul>
-    </article>
+    <div id="homepage-notes"></div>
+    <p style="margin-top: 1.5rem;"><a href="/zh/notes/">阅读所有技术笔记 →</a></p>
   </section>
 
   <!-- Tools -->

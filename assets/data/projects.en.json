@@ -1,0 +1,60 @@
+[
+  {
+    "id": "engine-full-flowpath-solver",
+    "title": "Aircraft Engine Full-Flowpath CFD Solver",
+    "category": "CFD Solver & Verification",
+    "period": "2023-2024",
+    "tagline": "Comprehensive CFD simulation platform for multi-stage engine components",
+    "highlights": [
+      "Equation non-dimensionalization and RANS turbulence modeling for complex internal flows",
+      "Jacobian matrix construction and sparse linear system solving using Krylov methods",
+      "MPI parallelization with domain decomposition for multi-core scaling",
+      "Hardware-software co-design for custom chip deployment and memory optimization",
+      "Performance profiling and bottleneck analysis across different computing platforms"
+    ],
+    "summary": "Developed a comprehensive CFD simulation platform for multi-stage aircraft engine components (fans, compressors, combustors, turbines), requiring both high accuracy and computational efficiency for engineering design cycles.",
+    "goal": "Achieve engineering-acceptable accuracy within 2-4 hour time budgets on available computing resources. Ensure solver stability and reproducibility across different hardware platforms while maintaining ±5% accuracy compared to commercial software.",
+    "role": "Lead solver architect and developer, responsible for numerical scheme implementation, implicit solver optimization, and hardware-software co-design.",
+    "results": "Achieved 3-5x acceleration on custom chips compared to traditional CPUs for representative test cases, while maintaining engineering accuracy within ±5% of commercial software results. Successfully deployed solver for production use in engine design workflows.",
+    "slug": "engine-full-flowpath-solver"
+  },
+  {
+    "id": "hpc-sparse-solver-optimization",
+    "title": "HPC Sparse Matrix Solver Optimization",
+    "category": "HPC / Sparse Solvers / Chip Deployment",
+    "period": "2022-2023",
+    "tagline": "Improved convergence and parallel efficiency for industrial-scale engine simulations",
+    "highlights": [
+      "Analysis of sparsity patterns in CFD Jacobian matrices and their impact on solver performance",
+      "Implementation and comparison of algebraic multigrid (AMG) preconditioners",
+      "Development of problem-specific preconditioning strategies for turbomachinery flows",
+      "Memory bandwidth optimization and cache-aware data structures",
+      "Load balancing algorithms for heterogeneous computing environments"
+    ],
+    "summary": "Optimized implicit CFD solver performance by improving preconditioning strategies and parallel scaling for large sparse linear systems.",
+    "goal": "Improve convergence rate and parallel efficiency for industrial-scale engine simulations. Reduce solver iteration count and achieve >80% parallel scaling efficiency on large core counts.",
+    "role": "Solver algorithm researcher and optimizer, focusing on preconditioning strategies and parallel scaling.",
+    "results": "Reduced solver iteration count by 40-60% for compressor and turbine test cases through improved preconditioning. Achieved 85%+ parallel scaling efficiency on up to 1024 cores. Memory usage optimized by 30% through better data structures.",
+    "slug": "hpc-sparse-solver-optimization"
+  },
+  {
+    "id": "ai-assisted-cfd-pipeline",
+    "title": "AI-Assisted CFD Development Pipeline",
+    "category": "AI + Simulation Workflow",
+    "period": "2024",
+    "tagline": "Accelerating development cycles while maintaining code quality and numerical accuracy",
+    "highlights": [
+      "AI-assisted code generation and refactoring for numerical algorithms",
+      "Automated parameter optimization using machine learning surrogate models",
+      "Performance data analysis and bottleneck identification with AI tools",
+      "Code review and testing automation for CFD-specific patterns",
+      "Integration of AI tools into existing development workflows"
+    ],
+    "summary": "Explored practical applications of AI tools in CFD workflows to accelerate development cycles while maintaining physical understanding and numerical rigor.",
+    "goal": "Accelerate development cycles while maintaining code quality and numerical accuracy. Target 30%+ reduction in development time for new features and 50%+ improvement in parameter tuning efficiency.",
+    "role": "AI integration lead, exploring practical applications of AI tools in CFD workflows.",
+    "results": "Reduced code development time by 35% for new numerical features. Improved parameter tuning efficiency by 50% through AI-assisted optimization. Enhanced code quality with automated review tools catching 25% more potential issues.",
+    "slug": "ai-assisted-cfd-pipeline"
+  }
+]
+

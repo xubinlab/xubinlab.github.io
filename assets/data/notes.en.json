@@ -1,0 +1,27 @@
+[
+  {
+    "id": "implicit-solver-convergence",
+    "title": "Understanding Convergence Behavior in Implicit CFD Solvers",
+    "date": "2024-12",
+    "category": "Numerical Methods & Solvers",
+    "summary": "Analysis of convergence behavior in implicit CFD solvers, covering CFL conditions, linear solver coupling, and practical convergence criteria for engineering applications.",
+    "slug": "implicit-solver-convergence"
+  },
+  {
+    "id": "preconditioning-sparse-systems",
+    "title": "Preconditioning Strategies for CFD Sparse Linear Systems",
+    "date": "2024-11",
+    "category": "HPC / Sparse Solvers",
+    "summary": "Discussion of preconditioning techniques for large sparse systems in implicit CFD solvers, with focus on AMG and domain-specific strategies.",
+    "slug": "preconditioning-sparse-systems"
+  },
+  {
+    "id": "parallel-scaling-analysis",
+    "title": "Practical Analysis of Parallel Scaling in CFD Applications",
+    "date": "2024-10",
+    "category": "HPC / Performance",
+    "summary": "Practical guidelines for analyzing and improving parallel scaling efficiency in large-scale CFD simulations.",
+    "slug": "parallel-scaling-analysis"
+  }
+]
+

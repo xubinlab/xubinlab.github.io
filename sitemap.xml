@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Home Pages -->
   <url>
     <loc>https://xubinlab.com/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/" />
@@ -11,41 +12,157 @@
   </url>
   <url>
     <loc>https://xubinlab.com/zh/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2025-01-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/" />
     <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/" />
   </url>
+  
+  <!-- Tech Stack -->
   <url>
     <loc>https://xubinlab.com/tech-stack/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/tech-stack/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/tech-stack/" />
   </url>
+  <url>
+    <loc>https://xubinlab.com/zh/tech-stack/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/tech-stack/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/tech-stack/" />
+  </url>
+  
+  <!-- Projects -->
   <url>
     <loc>https://xubinlab.com/projects/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/projects/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/projects/" />
   </url>
   <url>
-    <loc>https://xubinlab.com/notes/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://xubinlab.com/zh/projects/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/projects/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/projects/" />
   </url>
   <url>
-    <loc>https://xubinlab.com/tools/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://xubinlab.com/projects/engine-full-flowpath-solver/</loc>
+    <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/projects/engine-full-flowpath-solver/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/projects/engine-full-flowpath-solver/" />
   </url>
   <url>
+    <loc>https://xubinlab.com/zh/projects/engine-full-flowpath-solver/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/projects/engine-full-flowpath-solver/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/projects/engine-full-flowpath-solver/" />
+  </url>
+  <url>
+    <loc>https://xubinlab.com/projects/hpc-sparse-solver-optimization/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/projects/hpc-sparse-solver-optimization/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/projects/hpc-sparse-solver-optimization/" />
+  </url>
+  <url>
+    <loc>https://xubinlab.com/zh/projects/hpc-sparse-solver-optimization/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/projects/hpc-sparse-solver-optimization/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/projects/hpc-sparse-solver-optimization/" />
+  </url>
+  <url>
+    <loc>https://xubinlab.com/projects/ai-assisted-cfd-pipeline/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/projects/ai-assisted-cfd-pipeline/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/projects/ai-assisted-cfd-pipeline/" />
+  </url>
+  <url>
+    <loc>https://xubinlab.com/zh/projects/ai-assisted-cfd-pipeline/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/projects/ai-assisted-cfd-pipeline/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/projects/ai-assisted-cfd-pipeline/" />
+  </url>
+  
+  <!-- Notes -->
+  <url>
+    <loc>https://xubinlab.com/notes/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/notes/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/notes/" />
+  </url>
+  <url>
+    <loc>https://xubinlab.com/zh/notes/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/notes/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/notes/" />
+  </url>
+  <url>
+    <loc>https://xubinlab.com/notes/implicit-solver-convergence.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/notes/implicit-solver-convergence.html" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/notes/implicit-solver-convergence.html" />
+  </url>
+  
+  <!-- Tools -->
+  <url>
+    <loc>https://xubinlab.com/tools/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/tools/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/tools/" />
+  </url>
+  <url>
+    <loc>https://xubinlab.com/zh/tools/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/tools/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/tools/" />
+  </url>
+  
+  <!-- Misc -->
+  <url>
     <loc>https://xubinlab.com/misc/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2025-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/misc/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/misc/" />
+  </url>
+  <url>
+    <loc>https://xubinlab.com/zh/misc/</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/misc/" />
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/misc/" />
   </url>
 </urlset>
 
