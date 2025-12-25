@@ -65,21 +65,65 @@
   }
 
   /**
+   * Check if alternate language page exists via hreflang link
+   */
+  function getAlternatePath(lang) {
+    const alternateLinks = document.querySelectorAll('link[rel="alternate"][hreflang]');
+    for (const link of alternateLinks) {
+      if (link.getAttribute('hreflang') === lang) {
+        const url = new URL(link.getAttribute('href'), window.location.origin);
+        return url.pathname;
+      }
+    }
+    return null;
+  }
+
+  /**
    * Get Chinese path for current page
    */
   function getChinesePath() {
+    // First, try to get from hreflang
+    const hreflangPath = getAlternatePath('zh-cn');
+    if (hreflangPath) {
+      return hreflangPath;
+    }
+
+    // Fallback strategy
     const relPath = getCurrentRelativePath();
-    // Check if Chinese version exists by testing path
-    // For now, we assume all pages have Chinese versions
-    // Fallback to /zh/ if specific page doesn't exist
-    return '/zh' + relPath;
+    const pathname = window.location.pathname;
+    
+    // For notes pages, fallback to notes list
+    if (relPath.startsWith('/notes/') && relPath !== '/notes/') {
+      return '/zh/notes/';
+    }
+    
+    // For other pages, try direct translation
+    const directPath = '/zh' + relPath;
+    
+    // Default fallback to Chinese home
+    return '/zh/';
   }
 
   /**
    * Get English path for current page
    */
   function getEnglishPath() {
+    // First, try to get from hreflang
+    const hreflangPath = getAlternatePath('en');
+    if (hreflangPath) {
+      return hreflangPath;
+    }
+
+    // Fallback strategy
     const relPath = getCurrentRelativePath();
+    const pathname = window.location.pathname;
+    
+    // For notes pages, fallback to notes list
+    if (relPath.startsWith('/notes/') && relPath !== '/notes/') {
+      return '/notes/';
+    }
+    
+    // For other pages, return relative path (already in English root)
     return relPath === '/' ? '/' : relPath;
   }
 

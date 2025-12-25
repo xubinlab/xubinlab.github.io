@@ -126,7 +126,27 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://xubinlab.com/notes/implicit-solver-convergence.html" />
-    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/notes/implicit-solver-convergence.html" />
+  </url>
+  <url>
+    <loc>https://xubinlab.com/zh/notes/2025-fea-struct-solvers.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/notes/2025-fea-struct-solvers.html" />
+  </url>
+  <url>
+    <loc>https://xubinlab.com/zh/notes/2025-open-source-sim-survey.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/notes/2025-open-source-sim-survey.html" />
+  </url>
+  <url>
+    <loc>https://xubinlab.com/zh/notes/chip-cfd-on-custom-chips.html</loc>
+    <lastmod>2025-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-cn" href="https://xubinlab.com/zh/notes/chip-cfd-on-custom-chips.html" />
   </url>
   
   <!-- Tools -->

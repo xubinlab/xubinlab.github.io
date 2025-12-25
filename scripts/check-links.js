@@ -101,6 +101,37 @@ function checkLink(linkObj) {
 }
 
 /**
+ * Extract navigation links from site-nav.js
+ */
+function extractNavLinks() {
+  const navJsPath = path.join(SITE_ROOT, 'assets', 'js', 'site-nav.js');
+  if (!fs.existsSync(navJsPath)) {
+    console.warn('⚠️  site-nav.js not found, skipping nav link check');
+    return;
+  }
+
+  const content = fs.readFileSync(navJsPath, 'utf-8');
+  
+  // Extract href values from navConfig
+  const hrefRegex = /href:\s*['"]([^'"]+)['"]/g;
+  let match;
+  
+  while ((match = hrefRegex.exec(content)) !== null) {
+    const link = match[1];
+    // Only check internal links (skip anchors for now)
+    if (link.startsWith('/') && !link.startsWith('http')) {
+      const key = `site-nav.js -> ${link}`;
+      if (!INTERNAL_LINKS.has(key)) {
+        INTERNAL_LINKS.set(key, {
+          link: link,
+          source: 'assets/js/site-nav.js'
+        });
+      }
+    }
+  }
+}
+
+/**
  * Main execution
  */
 function main() {
@@ -108,12 +139,16 @@ function main() {
   findHTMLFiles(SITE_ROOT);
   console.log(`Found ${HTML_FILES.length} HTML files\n`);
 
-  console.log('📝 Extracting internal links...');
+  console.log('📝 Extracting internal links from HTML...');
   for (const file of HTML_FILES) {
     const content = fs.readFileSync(file, 'utf-8');
     extractLinks(content, file);
   }
-  console.log(`Found ${INTERNAL_LINKS.size} internal links\n`);
+  console.log(`Found ${INTERNAL_LINKS.size} internal links from HTML\n`);
+
+  console.log('📝 Extracting navigation links from site-nav.js...');
+  extractNavLinks();
+  console.log(`Total links to check: ${INTERNAL_LINKS.size}\n`);
 
   console.log('✅ Checking links...');
   for (const linkObj of INTERNAL_LINKS.values()) {
